@@ -1,0 +1,28 @@
+{
+  "name": "personal-website2.0",
+  "version": "0.0.1",
+  "description": "个人网站2.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config config/webpack.dev.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rover95/personal-website2.0.git"
+  },
+  "author": "rovelast@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
