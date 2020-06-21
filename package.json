@@ -4,7 +4,7 @@
   "description": "个人网站2.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config config/webpack.dev.config.js",
+    "start": "webpack --config config/webpack.config.js --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +22,13 @@
   "devDependencies": {
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "ts-loader": "^7.0.5",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
