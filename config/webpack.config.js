@@ -6,6 +6,9 @@ module.exports = {
     path: path.resolve(__dirname,'../dist'),
     filename:'bundle.js'
   },
+  resolve: {
+    extensions: [".js", ".tsx", ".jsx", ".json"]
+  },
   module:{
     rules:[
       {
@@ -15,5 +18,9 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, '.') ，
+    hot: true
   }
 }
