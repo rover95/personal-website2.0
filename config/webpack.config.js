@@ -1,26 +1,27 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname,'../src/index.tsx'),
-  output:{
-    path: path.resolve(__dirname,'../dist'),
-    filename:'bundle.js'
+  entry: path.resolve(__dirname, "../src/index.tsx"),
+  output: {
+    path: path.resolve(__dirname, "../dist"),
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".tsx", ".jsx", ".json"]
+    extensions: [".js", ".tsx", ".jsx", ".json"],
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
-        test:/\.tsx?$/,
-        use:{
-          loader: 'ts-loader'
-        }
-      }
-    ]
+        test: /\.tsx?$/,
+        use: {
+          loader: "ts-loader",
+        },
+      },
+    ],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '.') ，
-    hot: true
-  }
-}
+    contentBase: path.resolve(__dirname, "../dist"),
+    port: 5555,
+    hot: true,
+  },
+};
