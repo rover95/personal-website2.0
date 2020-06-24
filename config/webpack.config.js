@@ -1,9 +1,10 @@
-const path = require('path');
+const { resolve } = require("path");
+const copyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "../src/index.tsx"),
+  entry: resolve(__dirname, "../src/index.tsx"),
   output: {
-    path: path.resolve(__dirname, "../dist"),
+    path: resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
   resolve: {
@@ -17,10 +18,28 @@ module.exports = {
           loader: "ts-loader",
         },
       },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(jpg|jpeg|png|svg)$/,
+        loader: "file-loader",
+      },
     ],
   },
+  plugins: [
+    new copyWebpackPlugin({
+      patterns:[
+        {
+          from: resolve(__dirname, "../assets"),
+          to: resolve(__dirname, "../dist/assets"),
+        }
+      ]
+    })
+  ],
   devServer: {
-    contentBase: path.resolve(__dirname, "../dist"),
+    contentBase: resolve(__dirname, "../dist"),
     port: 5555,
     hot: true,
   },
