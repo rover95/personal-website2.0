@@ -1,5 +1,6 @@
 const { resolve } = require("path");
 const copyWebpackPlugin = require("copy-webpack-plugin");
+const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: resolve(__dirname, "../src/index.tsx"),
@@ -15,9 +16,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: {
-          loader: "ts-loader",
+          loader: "awesome-typescript-loader",
         },
       },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
@@ -29,18 +31,19 @@ module.exports = {
     ],
   },
   plugins: [
+    new htmlWebpackPlugin({}),
     new copyWebpackPlugin({
-      patterns:[
+      patterns: [
         {
           from: resolve(__dirname, "../assets"),
           to: resolve(__dirname, "../dist/assets"),
-        }
-      ]
-    })
+        },
+      ],
+    }),
   ],
-  devServer: {
-    contentBase: resolve(__dirname, "../dist"),
-    port: 5555,
-    hot: true,
-  },
+  // devServer: {
+  //   contentBase: resolve(__dirname, "../dist"),
+  //   port: 5555,
+  //   hot: true,
+  // },
 };
