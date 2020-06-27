@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-import imgRovelast from "../../assets/rovelast.png";
+import imgRovelast from "../../../assets/img/rovelast.png";
 
 import "./home.scss"
 
+console.log(imgRovelast);
+
+
 function Home(){
   return (
-    <div className="box">1
-      <img className="t-img" src="../../../assets/rovelast.png" alt="" />
+    <div className="box">
+      <img className="t-img" src={require("../../../assets/img/rovelast.png").default} alt="" />
     </div>
   );
 }
