@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import './index.scss'
 
@@ -12,7 +12,7 @@ function Tabs () {
     },
     {
       label: "介绍",
-      url: "",
+      url: "/introduction",
     },
     {
       label: "摄影",
@@ -20,17 +20,15 @@ function Tabs () {
     },
     {
       label: "足迹",
-      url: "",
+      url: "/footmark",
     },
   ]);
   return (
     <div className='row'>
-      {menu.map(val=>{
+      {menu.map((val,idx)=>{
         return (
-          <Link className='link' to={val.url}>
-            <div key={val.label} className="cell">
-              {val.label}
-            </div>
+          <Link key={val.label+idx} className="link" to={val.url}>
+            <div className="cell">{val.label}</div>
           </Link>
         );
       })}
@@ -38,4 +36,4 @@ function Tabs () {
   );
 }
 
-export default Tabs;
+export default withRouter(Tabs);

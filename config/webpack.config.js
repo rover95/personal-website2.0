@@ -22,6 +22,16 @@ module.exports = {
         },
       },
       { enforce: "pre", test: /\.(js|tsx)$/, loader: "source-map-loader" },
+      // {
+      //     test: /\.(ts|tsx)$/,
+      //     enforce: 'pre',
+      //     use: [
+      //         {
+      //             loader: 'tslint-loader',
+      //             options: { }
+      //         }
+      //     ]
+      // },
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],

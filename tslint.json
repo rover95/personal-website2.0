@@ -26,7 +26,7 @@
         "semicolon": [
             true,
             "always",
-            "ignore-bound-class-methods"
+            // "ignore-bound-class-methods"
         ],
         "no-unused-expression": [
             true,
@@ -47,6 +47,12 @@
         "no-trailing-whitespace": false,
         "jsx-alignment": false,
         "jsx-wrap-multilines": false,
+        // 优先使用 const 声明变量
+        "prefer-const": true,
+        // 不许使用 var 声明变量
+        "no-var-keyword": true,
+        "quotes": [1, "single"],// 单引号
+        "semi": [2, "always"],//语句强制分号结尾
         "no-shadowed-variable": [
             false,
             {
@@ -59,6 +65,7 @@
                 "typeParameter": false
             }
         ]
+        
     },
     "rulesDirectory": []
 }
