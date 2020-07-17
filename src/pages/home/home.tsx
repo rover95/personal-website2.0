@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import Test from '../test/test';
 
-import imgRovelast from "../../../assets/img/rovelast.png";
+import './home.scss';
 
-import "./home.scss"
-
-console.log(imgRovelast)
-
-function Home(){
+function Home() {
   return (
     <div className="box">
       <img
         className="t-img"
-        src={require("../../../assets/img/rovelast.png").default}
+        src={require('../../../assets/img/rovelast.png').default}
         alt=""
       />
+      <Test></Test>
       <Button variant="success">点击</Button>
     </div>
   );

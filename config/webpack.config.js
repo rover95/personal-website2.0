@@ -1,6 +1,8 @@
 const { resolve } = require("path");
 const copyWebpackPlugin = require("copy-webpack-plugin");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const DashboardPlugin = require("webpack-dashboard/plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
   entry: resolve(__dirname, "../src/index.tsx"),
@@ -57,6 +59,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin(),
     new htmlWebpackPlugin({
       template: "index.ejs",
     }),

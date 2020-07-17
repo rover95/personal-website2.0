@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Tabs from "./components/tabs";
-import Home from "./pages/home/home";
-import Photography from "./pages/photography/photography";
-import Footmark from "./pages/footmark/footmark";
-import Introduction from "./pages/introduction/introduction";
+import React, { useState } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Tabs from './components/tabs';
+import Home from './pages/home/home';
+import Photography from './pages/photography/photography';
+import Footmark from './pages/footmark/footmark';
+import Introduction from './pages/introduction/introduction';
 
-import "./app.scss";
+import './app.scss';
+
 
 function App() {
-  const [name, setName] = useState("rovelast");
+  const [name, setName] = useState('rovelast');
   return (
     <div className="app">
       <BrowserRouter>
