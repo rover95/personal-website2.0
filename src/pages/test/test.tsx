@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// import './98.css';
+import './test.css';
 
 type Log = (name: string, other?:number)  => void;
 interface Clog {
@@ -33,7 +35,21 @@ console.log(boy.name);
 function Test () {
   const [name, setName] = useState();
   return (
-    <div>test</div>
+    <div>
+      <div className="window" style={{width: 300}}>
+        <div className="title-bar">
+          <div className="title-bar-text">A Window With Stuff In It</div>
+          <div className="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close">2</button>
+          </div>
+        </div>
+        <div className="window-body">
+          <p>There's so much room for activities!</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
