@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 
 function Photography () {
   return (
-    <div>摄影</div>
+    <div>
+      <div>摄影</div>
+      <button>hi</button>
+    </div>
   );
 }
 

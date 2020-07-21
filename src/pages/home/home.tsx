@@ -9,7 +9,7 @@ function Home() {
     <div className="box">
       <img
         className="t-img"
-        src={require('../../../assets/img/rovelast.png').default}
+        src={require('../../assets/img/rovelast.png').default}
         alt=""
       />
       <Test></Test>

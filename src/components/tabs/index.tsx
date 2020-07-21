@@ -26,19 +26,21 @@ function Tabs () {
   ]);
   const currentIdx = menu.findIndex((val) => (val.url.match(location.pathname))); 
   return (
-    <div className="row">
-      <div className="container">
-        {menu.map((val, idx) => {
-          return (
-            <Link
-              key={val.label + idx}
-              className={`link ${idx === currentIdx ? 'active' : ''}`}
-              to={val.url}
-            >
-              <div className="cell">{val.label}</div>
-            </Link>
-          );
-        })}
+    <div className="namespace-tabs">
+      <div className="row">
+        <div className="container">
+          {menu.map((val, idx) => {
+            return (
+              <Link
+                key={val.label + idx}
+                className={`link ${idx === currentIdx ? "active" : ""}`}
+                to={val.url}
+              >
+                <div className="cell">{val.label}</div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

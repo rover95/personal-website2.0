@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import Modal from '../../components/modal/index';
 
 function Introduction () {
   return (
-    <div>介绍</div>
+    <div>
+      <Modal></Modal>
+    </div>
   );
 }
 

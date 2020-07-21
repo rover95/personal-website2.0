@@ -13,7 +13,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".tsx", ".jsx", ".json"],
+    extensions: [".js", ".ts", ".tsx", ".jsx", ".json"],
   },
   module: {
     rules: [
@@ -35,11 +35,11 @@ module.exports = {
       //     ]
       // },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(jpg|jpeg|png|svg|gif)$/,
+        test: /\.(jpg|jpeg|png|svg|gif|woff|woff2|ttf)$/,
         loader: "file-loader",
         options: {
           name: "[path][name].[ext]",
