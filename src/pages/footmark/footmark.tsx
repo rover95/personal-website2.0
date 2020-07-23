@@ -9,7 +9,7 @@ import './footmark.scss';
 
 function Footmark () {
   useEffect(()=>{
-  init();
+    init();
   },[]);
   return (
     <div className="map-box">

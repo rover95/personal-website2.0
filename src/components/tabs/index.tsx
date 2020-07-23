@@ -23,6 +23,10 @@ function Tabs () {
       label: '足迹',
       url: '/footmark',
     },
+    {
+      label: '项目',
+      url: '/project',
+    },
   ]);
   const currentIdx = menu.findIndex((val) => (val.url.match(location.pathname))); 
   return (
@@ -33,7 +37,7 @@ function Tabs () {
             return (
               <Link
                 key={val.label + idx}
-                className={`link ${idx === currentIdx ? "active" : ""}`}
+                className={`link ${idx === currentIdx ? 'active' : ''}`}
                 to={val.url}
               >
                 <div className="cell">{val.label}</div>

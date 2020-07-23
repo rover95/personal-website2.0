@@ -5,6 +5,7 @@ import Home from './pages/home/home';
 import Photography from './pages/photography/photography';
 import Footmark from './pages/footmark/footmark';
 import Introduction from './pages/introduction/introduction';
+import Project from './pages/project/project';
 
 import './app.scss';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/photography" exact component={Photography}></Route>
         <Route path="/footmark" exact component={Footmark}></Route>
         <Route path="/introduction" exact component={Introduction}></Route>
+        <Route path="/project" exact component={Project}></Route>
       </BrowserRouter>
     </div>
   );
