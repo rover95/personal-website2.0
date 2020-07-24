@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import Window from '../../components/window';
 
+import './project.scss';
+
+
+interface ContainerProps {
+  hideSourceOnDrag: boolean;
+}
+const ondrag = (e: any) => {
+  console.log(e);
+};
 function Project () {
-  const [name, setName] = useState();
+  
   return (
-    <div>
-      什么
-      <Window title="asdjhj">
-        <div className="h1">标题</div>
-        <iframe src="https://www.baidu.com/"></iframe>
-      </Window>
+    <div className="namespace-project">
+      <div className="page" onDrag={ondrag}>
+        <Window title="干">
+          <iframe src="https://www.zcool.com.cn/"></iframe>
+        </Window>
+      </div>
     </div>
   );
 }

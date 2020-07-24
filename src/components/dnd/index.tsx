@@ -1,4 +1,4 @@
-import { useDrag } from 'react-dnd';
+import React, { useDrag } from 'react-dnd';
 import Window from '../window';
 
 /**
@@ -6,7 +6,7 @@ import Window from '../window';
  */
 export default function Card({ isDragging, text }) {
   const [{ opacity }, dragRef] = useDrag({
-    item: { type: Window.CARD, text },
+    item: { type: Window, text },
     collect: (monitor) => ({
       opacity: monitor.isDragging() ? 0.5 : 1,
     }),
