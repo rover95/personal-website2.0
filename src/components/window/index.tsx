@@ -13,7 +13,7 @@ const Window: FC<Props> = ({ title, id, left, top, children }) => {
   
   return (
     <div
-      className="namespace-98 namespace-modal"
+      className="namespace-98 namespace-modal pos-ab"
       draggable
       style={{ left, top }}
     >
