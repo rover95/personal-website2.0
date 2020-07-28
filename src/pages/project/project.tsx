@@ -19,19 +19,23 @@ function Project () {
     y: 220,
   });
   const relative = { ...position };
-  const onDrag = (e: any) => {
-    
-  };
-  const onDragStart = (e: any) => {
-    e.dataTransfer.effectAllowed = 'move'; //移动效果
-    e.dataTransfer.setData('text', ''); 
+  let moving = false;
+  const onMouseDown = (e: any) => {
+    moving = true;
     relative.x = e.clientX - position.x;
     relative.y = e.clientY - position.y;
-    console.log('数据', e, relative);
+    
+  };
+  const onMouseUp = (e: any) => {
+    moving = false;
+    console.log('UP', e);
   };
   const onDrop = (e: any) => {
+    if(!moving){
+      return;
+    }
+    console.log(e);
     const { clientX, clientY } = e;
-    console.log('放下', e, relative);
     e.preventDefault() || e.stopPropagation();
     setPosition({
       x: clientX - relative.x,
@@ -40,8 +44,8 @@ function Project () {
   };
   return (
     <div className="namespace-project">
-      <div className="page">
-        <div draggable onDrag={onDrag} onDragOver={onDrop} onDrop={onDrop} onDragStart={onDragStart}>
+      <div className="page" onMouseMove={onDrop} onMouseUp={onMouseUp}>
+        <div onMouseDown={onMouseDown}>
           <Window title="干" left={position.x} top={position.y}>
             <h3>www</h3>
             {/* <iframe src="https://www.zcool.com.cn/"></iframe> */}
