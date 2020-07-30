@@ -21,8 +21,8 @@ function Project () {
           <Window title="站酷" left={position.x} top={position.y}>
             <iframe src="https://www.zcool.com.cn/"></iframe>
           </Window>
-          <Window title="新建窗口" left={90} top={90}>
-            <h1>www</h1>
+          <Window title="新建窗口WWW" left={90} top={90}>
+            <h1>www.asdwe.com</h1>
           </Window>
         </div>
       </div>

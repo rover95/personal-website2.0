@@ -54,8 +54,8 @@ const Window: FC<Props> = ({ title, id, left, top, children }) => {
     if(x>width-30){
       x = width-30;
     }
-    if (y > height - 50) {
-      y = height - 50;
+    if (y > height - 30) {
+      y = height - 30;
     }
     setPosition({x,y});
   };
