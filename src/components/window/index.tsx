@@ -1,79 +1,123 @@
-import React, { useState,useEffect, FC } from 'react';
+import React, { FC, useState,useEffect,useRef } from 'react';
 import { useComponentWillMount } from '../../hooks';
 import './index.scss';
 
 type Props = { 
   title:string; 
   id?: any;
+  parentNodeId?: any;
   left: number;
   top: number;
+  zIndex?: number;
+  width?:number;
+  height?:number;
+};
+const getElementSize = (id: string)=>{
+  const bodyElement = document.getElementById(id);
+  const bodyWidth = bodyElement && bodyElement.clientWidth;
+  const bodyHeight = bodyElement && bodyElement.clientHeight;
+  return { bodyWidth, bodyHeight};
 };
 
 let moving: boolean = false;
-let x: number = 0;
-let y: number = 0;
-const width = document.body.offsetWidth;
-const height = document.documentElement.clientHeight;
-console.log(width, height, document.body);
+let sizeChanging: boolean = false;
+let offsetWidth = document.body.offsetWidth;
+let offsetHeight = document.documentElement.clientHeight;
 
-const Window: FC<Props> = ({ title, id, left, top, children }) => {
+const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children, parentNodeId }) => {
+  useEffect(()=>{
+    if (parentNodeId){
+      const { bodyWidth, bodyHeight } = getElementSize(parentNodeId);
+      if (bodyWidth && bodyHeight){
+        offsetWidth = bodyWidth;
+        offsetHeight = bodyHeight;
+        console.log(offsetHeight);
+      }
+    }
+  },[]);
   const [position, setPosition] = useState({
     x: left,
     y: top,
   });
-  useComponentWillMount(()=>{
-      x = left;
-      y = top;
+  const [size, setSize] = useState({});
+  const windowPosition = useRef({
+    x: left,
+    y: top,
   });
-  // useEffect(() => {
-  //   x = left;
-  //   y = top;
-  //   setPosition({
-  //     x,
-  //     y,
-  //   });
-  //   return ()=>{
-      
-  //   };
-  // }, []);
-  const relative = { ...position };
+  const { bodyWidth, bodyHeight } = getElementSize(id);
+  const windowSize = useRef({
+    w: width || bodyWidth ,
+    h: height || bodyHeight
+  });
+  const relativePosition = { ...position };
   const onMouseUp = (e: any) => {
     moving = false;
+    sizeChanging = false;
   };
   const onDrop = (e: any) => {
     if (!moving) {
       return;
     }
+    let { x, y } = windowPosition.current;
     const { clientX, clientY } = e;
     e.preventDefault() || e.stopPropagation();
-    x = clientX - relative.x;
-    y = clientY - relative.y;
+    x = clientX - relativePosition.x;
+    y = clientY - relativePosition.y;
 
-    if(x<0) x=0;
-    if(y<0) y=0;
-    if(x>width-30){
-      x = width-30;
+    if (x < 0) x=0;
+    if (y<0) y=0;
+    if (x >offsetWidth-30){
+      x = offsetWidth-30;
     }
-    if (y > height - 30) {
-      y = height - 30;
+    if (y > offsetHeight - 30) {
+      y = offsetHeight - 30;
     }
-    setPosition({x,y});
+    windowPosition.current={x,y};
+    setPosition({ x, y});
   };
-  const onMouseDown = (e: any) => {
+  const onSizeChanging = (e: any, direction?:string) =>{
+    if (!sizeChanging) {
+      return;
+    }
+    const { x, y } = windowPosition.current;
+    let { w, h } = windowSize.current;
+
+    if (direction ==='width'){
+      w = e.clientX - x - 18;
+    } else if (direction === 'height'){
+      h = e.clientY - y - 43;
+    }else{
+      w = e.clientX - x - 18;
+      h = e.clientY - y - 43;
+    }
+    if(w&&w<100)w=100;
+    if (h &&h<100)h=100;
+    windowSize.current={
+      w,h
+    };
+    setSize({});
+  };
+  const onPositionMouseDown = (e: any) => {
     moving = true;
-    relative.x = e.clientX - position.x;
-    relative.y = e.clientY - position.y;
+    relativePosition.x = e.clientX - position.x;
+    relativePosition.y = e.clientY - position.y;
     document.onmousemove = onDrop;
     document.onmouseup = onMouseUp;
   };
+  const onSizeMouseDown = (e: any, direction?: string) => {
+    sizeChanging = true;
+    document.onmousemove = (e)=>onSizeChanging(e,direction);
+    document.onmouseup = onMouseUp;
+  };
+  const { w , h  } = windowSize.current;
   return (
     <div
       className="namespace-98 namespace-modal pos-ab"
-      style={{ left:x, top:y }}
+      style={{ left: windowPosition.current.x, top: windowPosition.current.y,  zIndex: zIndex || 'auto' }}
     >
-      <div className="modal-box">
+      <div className="window-container" >
         <div className="window">
-          <div className="title-bar" onMouseDown={onMouseDown}>
+          <div className="title-bar" onMouseDown={onPositionMouseDown}>
             <div className="title-bar-text">{title}</div>
             <div className="title-bar-controls">
               <button aria-label="Minimize"></button>
@@ -81,11 +125,14 @@ const Window: FC<Props> = ({ title, id, left, top, children }) => {
               <button aria-label="Close"></button>
             </div>
           </div>
-          <div className="window-body">{children}</div>
+          <div className="window-body window-body-box" id={id} style={{ width: w || 'auto', height: h || 'auto' }}>{children}</div>
         </div>
+        <div className="size-contrl-r" onMouseDown={(e)=>onSizeMouseDown(e,'width')}></div>
+        <div className="size-contrl-b" onMouseDown={(e) => onSizeMouseDown(e, 'height')}></div>
+        <div className="size-contrl" onMouseDown={onSizeMouseDown}></div>
       </div>
     </div>
   );
 };
 
-export default Window;
+export default Win;

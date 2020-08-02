@@ -1,8 +1,10 @@
 .namespace-project{
   .page{
-    position: relative;
+    position: fixed;
+    left: 0;
+    top: 54px;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 54px);
     overflow: hidden;
   }
   .container{

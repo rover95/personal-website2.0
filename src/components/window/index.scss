@@ -1,11 +1,38 @@
 .namespace-modal{
-  .modal-box{
+  .window-container{
     // position: fixed;
     // top: 50%;
     // left: 50%;
     // transform: translateX(-50%) translateY(-50%);
-    position: absolute;
+    // position: absolute;
     display: inline-block;
     user-select:none;
+    .window-body-box{
+      overflow: auto;
+    }
+    .size-contrl-r{
+      position: absolute;
+      top: 25px;
+      bottom: 3px;
+      right: 0px;
+      width: 5px;
+      cursor: e-resize;
+    }
+    .size-contrl-b{
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      right: 0;
+      height: 5px;
+      cursor: n-resize;
+    }
+    .size-contrl{
+      position: absolute;
+      bottom: 3px;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      cursor: se-resize;
+    }
   }
 }
