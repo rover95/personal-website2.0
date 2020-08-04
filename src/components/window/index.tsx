@@ -85,10 +85,10 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
     if (direction ==='width'){
       w = e.clientX - x - 18;
     } else if (direction === 'height'){
-      h = e.clientY - y - 43;
+      h = e.clientY - y - 92;
     }else{
       w = e.clientX - x - 18;
-      h = e.clientY - y - 43;
+      h = e.clientY - y - 92;
     }
     if(w&&w<100)w=100;
     if (h &&h<100)h=100;

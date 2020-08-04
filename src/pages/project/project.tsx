@@ -17,12 +17,19 @@ type Windwo = {
 };
 
 function Project () {
-  const windowArr:Windwo[] = [
+  const windowArr: Windwo[] = [
     {
       id: 'w1',
       title: 'www',
       zIndex: 0,
-      content: <iframe src="https://www.zcool.com.cn/"></iframe>
+      content: (
+        <div style={{ width: '100%', height: '100%'}}>
+          <iframe
+            src="https://www.zcool.com.cn/"
+            style={{ width: '100%', height: '100%' }}
+          ></iframe>
+        </div>
+      ),
     },
     {
       id: 'w2',
@@ -33,7 +40,18 @@ function Project () {
       width: 400,
     },
   ];
+  const [urlIptValue, setUrlIptValue] = useState('https://www.baidu.com');
+  const [browserSrc, setBrowserSrc] = useState('');
   const [windows, setWindows] = useState(windowArr);
+  const onUrlInputChange = (e:any)=>{
+    console.log(e.target.value);
+    setUrlIptValue(e.target.value);
+  };
+  const onJump = ()=>{
+    const src =
+      urlIptValue.indexOf('http') > -1 ? urlIptValue : 'https://' + urlIptValue;
+    setBrowserSrc(urlIptValue);
+  };
   const onWindowClick = (idx:number)=>{
     const tmp = [...windows];
     tmp.forEach((val,i)=>{
@@ -48,19 +66,46 @@ function Project () {
   return (
     <div className="namespace-project">
       <div className="page" id="project_page">
-        {windows.map((val,idx)=>{
-          return <div onMouseDown={()=>onWindowClick(idx)} key={val.title+idx}>
-            <Win parentNodeId="project_page" title={val.title} id={val.id} left={Math.random() * 600} top={Math.random() * 300} height={val.height} width={val.width} zIndex={val.zIndex}>
-              {val.content}
-            </Win>
-          </div>;
+        {windows.map((val, idx) => {
+          return (
+            <div onMouseDown={() => onWindowClick(idx)} key={val.title + idx}>
+              <Win
+                parentNodeId="project_page"
+                title={val.title}
+                id={val.id}
+                left={Math.random() * 600}
+                top={Math.random() * 300}
+                height={val.height}
+                width={val.width}
+                zIndex={val.zIndex}
+              >
+                {val.content}
+              </Win>
+            </div>
+          );
         })}
-        {/* <div >
-          <Win title="站酷" left={position.x} top={position.y}>
-            <iframe src="https://www.zcool.com.cn/"></iframe>
+        <div>
+          <Win title="IE 6.0" left={30} top={30} width={500} height={300}>
+            <div className="full browser">
+              <div className="addr-row">
+                <input
+                  className="ipt"
+                  type="text"
+                  value={urlIptValue}
+                  onChange={onUrlInputChange}
+                />
+                <button onClick={onJump}>跳转</button>
+              </div>
+              <div className="body">
+                {browserSrc ? (
+                  <div className="full">
+                    <iframe src={browserSrc} className="full"></iframe>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </Win>
-          
-        </div> */}
+        </div>
       </div>
     </div>
   );
