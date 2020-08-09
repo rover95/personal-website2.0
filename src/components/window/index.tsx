@@ -35,6 +35,7 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
       }
     }
   },[]);
+  const [cover, setCover] = useState('');
   const [position, setPosition] = useState({
     x: left,
     y: top,
@@ -53,6 +54,7 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
   const onMouseUp = (e: any) => {
     moving = false;
     sizeChanging = false;
+    setCover('');
   };
   const onDrop = (e: any) => {
     if (!moving) {
@@ -108,6 +110,7 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
     sizeChanging = true;
     document.onmousemove = (e)=>onSizeChanging(e,direction);
     document.onmouseup = onMouseUp;
+    setCover(direction ? direction:'both');
   };
   const { w , h  } = windowSize.current;
   return (
@@ -127,9 +130,9 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
           </div>
           <div className="window-body window-body-box" id={id} style={{ width: w || 'auto', height: h || 'auto' }}>{children}</div>
         </div>
-        <div className="size-contrl-r" onMouseDown={(e)=>onSizeMouseDown(e,'width')}></div>
-        <div className="size-contrl-b" onMouseDown={(e) => onSizeMouseDown(e, 'height')}></div>
-        <div className="size-contrl" onMouseDown={onSizeMouseDown}></div>
+        <div className={cover ==='width' ? 'size-contrl-r cover' :'size-contrl-r'} onMouseDown={(e)=>onSizeMouseDown(e,'width')}></div>
+        <div className={cover ==='height' ? 'size-contrl-b cover' : 'size-contrl-b'} onMouseDown={(e) => onSizeMouseDown(e, 'height')}></div>
+        <div className={cover ==='both'? 'size-contrl cover' : 'size-contrl '} onMouseDown={onSizeMouseDown}></div>
       </div>
     </div>
   );
