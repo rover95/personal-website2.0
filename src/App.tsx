@@ -6,6 +6,7 @@ import Photography from './pages/photography/photography';
 import Footmark from './pages/footmark/footmark';
 import Introduction from './pages/introduction/introduction';
 import Project from './pages/project/project';
+import Index from './pages';
 
 import './app.scss';
 
@@ -13,16 +14,17 @@ import './app.scss';
 function App() {
   const [name, setName] = useState('rovelast');
   return (
-    <div className="app">
       <BrowserRouter>
         <Tabs></Tabs>
-        <Route path="/" exact component={Home}></Route>
-        <Route path="/photography" exact component={Photography}></Route>
-        <Route path="/footmark" exact component={Footmark}></Route>
-        <Route path="/introduction" exact component={Introduction}></Route>
-        <Route path="/project" exact component={Project}></Route>
+        <Route path="/" exact component={Index}></Route>
+        <div style={{paddingTop:55}}>
+          <Route path="/home" exact component={Home}></Route>
+          <Route path="/photography" exact component={Photography}></Route>
+          <Route path="/footmark" exact component={Footmark}></Route>
+          <Route path="/introduction" exact component={Introduction}></Route>
+          <Route path="/project" exact component={Project}></Route>
+        </div>
       </BrowserRouter>
-    </div>
   );
 }
 

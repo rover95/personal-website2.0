@@ -1,5 +1,6 @@
 import React, { useState, ReactElement } from 'react';
 import Win from '../../components/window';
+import Browser from '../../components/browser';
 
 import './project.scss';
 
@@ -39,20 +40,19 @@ function Project () {
       height: 200,
       width: 400,
     },
+    {
+      id: 'w3',
+      title: 'IE 5.0 浏览器',
+      zIndex: 0,
+      content: <Browser></Browser>,
+      height: 200,
+      width: 400,
+    },
   ];
-  const [urlIptValue, setUrlIptValue] = useState('https://www.baidu.com');
-  const [browserSrc, setBrowserSrc] = useState('');
   const [windows, setWindows] = useState(windowArr);
-  const onUrlInputChange = (e:any)=>{
-    console.log(e.target.value);
-    setUrlIptValue(e.target.value);
-  };
-  const onJump = ()=>{
-    const src =
-      urlIptValue.indexOf('http') > -1 ? urlIptValue : 'https://' + urlIptValue;
-    setBrowserSrc(urlIptValue);
-  };
-  const onWindowClick = (idx:number)=>{
+
+  
+  function onWindowClick(idx:number){
     const tmp = [...windows];
     tmp.forEach((val,i)=>{
       if(i === idx){
@@ -62,7 +62,8 @@ function Project () {
       }
     });
     setWindows(tmp);
-  };
+  }
+  
   return (
     <div className="namespace-project">
       <div className="page" id="project_page">
@@ -84,28 +85,6 @@ function Project () {
             </div>
           );
         })}
-        <div>
-          <Win title="IE 6.0" left={30} top={30} width={500} height={300}>
-            <div className="full browser">
-              <div className="addr-row">
-                <input
-                  className="ipt"
-                  type="text"
-                  value={urlIptValue}
-                  onChange={onUrlInputChange}
-                />
-                <button onClick={onJump}>跳转</button>
-              </div>
-              <div className="body">
-                {browserSrc ? (
-                  <div className="full">
-                    <iframe src={browserSrc} className="full"></iframe>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </Win>
-        </div>
       </div>
     </div>
   );
