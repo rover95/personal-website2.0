@@ -1,79 +1,91 @@
-import React, { useState,useRef } from 'react';
+import React, { FC,useState,useRef,useEffect } from 'react';
 
-function Parallax () {
+import './index.scss';
+
+type Iprop = {
+  image: string
+};
+
+const Parallax:FC<Iprop> = ({image,children=[]}) => {
   const card = useRef(null);
   const [position, setPosition] = useState({
     mouseX: 0,
     mouseY: 0,
-    mouseLeaveDelay:null 
   });
   const [size, setSize] = useState({
     width: 0,
     height: 0,
   });
+  useEffect(()=>{
+    const cardRef = card.current || {offsetWidth:0,offsetHeight:0};
+    setSize({
+      width: cardRef.offsetWidth,
+      height: cardRef.offsetHeight,
+    });
+  },[]);
+  let mouseLeaveDelay:any;
   function handleMouseMove(e:any) {
+    
     const {width,height} = size;
-    const mouseX = e.pageX - card.offsetLeft - width / 2;
-    const mouseY = e.pageY - card.offsetTop - height / 2;
+    const cardRef = card.current || {offsetLeft:0,offsetTop:0};
+
+    const mouseX = e.pageX - cardRef.offsetLeft - width / 2;
+    const mouseY = e.pageY - cardRef.offsetTop - height / 2;
     setPosition({
       mouseX,
       mouseY
     });
   }
   function handleMouseEnter() {
-      clearTimeout(position.mouseLeaveDelay);
+      clearTimeout(mouseLeaveDelay);
   }
   function handleMouseLeave() {
-      const {mouseX,mouseY} = position;
-      const mouseLeaveDelay = setTimeout(function () {
-          mouseX = 0;
-          mouseY = 0;
+      mouseLeaveDelay = setTimeout(()=> {
           setPosition({
-            mouseX,
-            mouseY,
-            mouseLeaveDelay
+            mouseX:0,
+            mouseY:0,
           });
-      } 1000);
+      }, 1000);
   }
   function mousePX() {
-      return this.mouseX / this.width;
+      return position.mouseX / size.width;
   }
   function mousePY() {
-      return this.mouseY / this.height;
+      return position.mouseY / size.height;
   }
   function cardStyle() {
-      let rX = this.mousePX * 30;
-      let rY = this.mousePY * -30;
+      const rX = mousePX() * 30;
+      const rY = mousePY() * -30;
       return { transform: 'rotateY(' + rX + 'deg) rotateX(' + rY + 'deg)' };
   }
   function cardBgTransform() {
-      let tX = this.mousePX * -40;
-      let tY = this.mousePY * -40;
+      const tX = mousePX() * -40;
+      const tY = mousePY() * -40;
       return { transform: 'translateX(' + tX + 'px) translateY(' + tY + 'px)' };
   }
   function cardBgImage() {
-      return { backgroundImage: 'url(' + this.dataImage + ')' };
+      return { backgroundImage: 'url(' + image + ')' };
   }
+  
   return (
     <div className="parallax">
       <div
-      className="card-wrap"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      ref={card}
-    >
-        <div className="card" style="cardStyle">
-          <div className="card-bg" style="[cardBgTransform, cardBgImage]"></div>
-          <div className="card-info">
-            <slot name="header"></slot>
-            <slot name="content"></slot>
-          </div>
+        className="card-wrap"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        ref={card}
+      >
+        <div className="card" style={cardStyle()}>
+          <div className="card-bg" style={Object.assign({},cardBgTransform(),cardBgImage())}></div>
+          {/* <div className="card-info">
+            {children}
+          </div> */}
         </div>
       </div>
     </div>
     
   );
-}
+};
 
 export default Parallax;
