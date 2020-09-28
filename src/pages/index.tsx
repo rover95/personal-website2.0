@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function Index () {
   return (
-    <div>index</div>
+    <div>Hello World</div>
   );
 }
 
