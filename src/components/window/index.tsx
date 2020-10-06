@@ -11,6 +11,11 @@ type Props = {
   zIndex?: number;
   width?:number;
   height?:number;
+  onClose?:(e:any)=>void;
+  onMaximize?:(e:any)=>void;
+  onMinimize?:(e:any)=>void;
+  onPositionChange?:(e:any)=>void;
+  onSizeChange?:(e:any)=>void;
 };
 const getElementSize = (id: string)=>{
   const bodyElement = document.getElementById(id);
@@ -24,7 +29,7 @@ let sizeChanging: boolean = false;
 let offsetWidth = document.body.offsetWidth;
 let offsetHeight = document.documentElement.clientHeight;
 
-const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children, parentNodeId }) => {
+const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children, parentNodeId,onPositionChange,onSizeChange, onClose, onMaximize, onMinimize }) => {
   useEffect(()=>{
     if (parentNodeId){
       const { bodyWidth, bodyHeight } = getElementSize(parentNodeId);
@@ -36,6 +41,7 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
     }
   },[]);
   const [cover, setCover] = useState('');
+  const [hide, setHide] = useState(false);
   const [position, setPosition] = useState({
     x: left,
     y: top,
@@ -76,6 +82,7 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
     }
     windowPosition.current={x,y};
     setPosition({ x, y});
+    // onPositionChange!({x,y});
   };
   const onSizeChanging = (e: any, direction?:string) =>{
     if (!sizeChanging) {
@@ -113,19 +120,20 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
     setCover(direction ? direction:'both');
   };
   const { w , h  } = windowSize.current;
+  const { x, y} = windowPosition.current;
   return (
     <div
       className="namespace-98 namespace-modal pos-ab"
-      style={{ left: windowPosition.current.x, top: windowPosition.current.y,  zIndex: zIndex || 'auto' }}
+      style={{ left:x, top:y,  zIndex: zIndex || 'auto',display:hide?'none':'block' }}
     >
       <div className="window-container" >
         <div className="window">
           <div className="title-bar" onMouseDown={onPositionMouseDown}>
             <div className="title-bar-text">{title}</div>
             <div className="title-bar-controls">
-              <button aria-label="Minimize"></button>
-              <button aria-label="Maximize"></button>
-              <button aria-label="Close"></button>
+              <button aria-label="Minimize" onClick={onMinimize}></button>
+              <button aria-label="Maximize" onClick={onMaximize}></button>
+              <button aria-label="Close" onClick={(e)=>{onClose!(e);}}></button>
             </div>
           </div>
           <div className="window-body window-body-box" id={id} style={{ width: w || 'auto', height: h || 'auto' }}>{children}</div>
