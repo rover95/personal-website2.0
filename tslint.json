@@ -16,6 +16,7 @@
         "space-before-function-paren": false,
         "no-namespace": false,
         "label-position": false,
+        "one-variable-per-declaration":false,
         "quotemark": [
             true,
             "single",
