@@ -24,7 +24,7 @@ let camera: any,
   textGeo,
   textTexture,
   textMaterial,
-  text,
+  text: any,
   light,
   smokeTexture,
   smokeMaterial,
@@ -32,28 +32,43 @@ let camera: any,
   smokeParticles: any,
   delta: any,
   clock: any,
-  textSize: TextSize,
-  author_info: any;
+  textSize: TextSize;
 
 const phrases = [
-  'welcome, stranger',
-  'view the code on ',
+  'Hi, stranger',
+  'welcome to the remote corner of the Internet',
+  'View the code on ',
   'https://github.com/rover95/personal-website2.0',
+  '@rovelast',
+  ' ',
 ];
 function init() {
+  const innerHeight = window.innerHeight;
+  const innerWidth = window.innerWidth;
   clock = new THREE.Clock();
-
+  
   renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  textSize = {
-    width: window.innerWidth / 4 ,
-    height: window.innerWidth / 4 ,
-  };
+  renderer.setSize(
+    innerWidth ,
+    innerHeight 
+  );
+  if (innerWidth<500){
+    textSize = {
+      width: innerWidth / 2,
+      height: innerWidth / 2,
+    };
+  }else{
+    textSize = {
+      width: innerWidth / 4,
+      height: innerWidth / 4,
+    };
+  }
+    
   scene = new THREE.Scene();
 
   camera = new THREE.PerspectiveCamera(
     75,
-    window.innerWidth / window.innerHeight,
+    innerWidth / innerHeight,
     1,
     10000
   );
@@ -108,7 +123,7 @@ function init() {
     smokeParticles.push(particle);
   }
   const box = document.getElementById('canvas_box');
-  if(box){
+  if (box) {
     box.appendChild(renderer.domElement);
   }
   // document.body.appendChild(renderer.domElement);
@@ -117,10 +132,31 @@ function init() {
 function animate() {
   // note: three.js includes requestAnimationFrame shim
   delta = clock.getDelta();
+  
   requestAnimationFrame(animate);
+  changeTextColor();
   evolveSmoke();
   render();
 }
+//字体颜色变更
+const changeTextColor = (()=>{
+  let timeStamp = new Date().getTime();
+  return () => {
+    if(new Date().getTime() - timeStamp<200){ 
+      if (Math.random() > 0.6){
+        text.material.color.r = 0.8;
+        text.material.color.g = 1;
+        text.material.color.b = 0.2;
+      } 
+    }else if(Math.random()>0.99){
+      timeStamp = new Date().getTime();
+    }else{
+      text.material.color.r = 0.3;
+      text.material.color.g = 1;
+      text.material.color.b = 1;
+    }
+  };
+})();
 
 function evolveSmoke() {
   let sp:any = smokeParticles.length;
@@ -143,7 +179,7 @@ function authorInfoRender(phrases: string[]) {
   let counter = 0;
   const next = () => {
     fx.setText(phrases[counter]).then(() => {
-      setTimeout(next, 1800);
+      setTimeout(next, 2000);
     });
     counter = (counter + 1) % phrases.length;
   };
