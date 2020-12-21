@@ -15,7 +15,7 @@ import './app.scss';
 function App() {
   const [name, setName] = useState('rovelast');
   return (
-    <HashRouter>
+    <BrowserRouter>
       {/* <Redirect path="/" to="/#" /> */}
       <Switch>
         <Route path="/" exact component={Index}></Route>
@@ -37,7 +37,7 @@ function App() {
           </div>
         </Route>
       </Switch>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

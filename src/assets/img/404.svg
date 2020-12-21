@@ -1,13 +1,13 @@
 <svg viewBox="0 0 960 300">
-  <symbol id="s-text">
-    <text text-anchor="middle" x="50%" y="80%">404</text>
-  </symbol>
+	<symbol id="s-text">
+		<text text-anchor="middle" x="50%" y="80%">jquery</text>
+	</symbol>
 
-  <g class = "g-ants">
-    <use xlink:href="#s-text" class="text"></use>
-    <use xlink:href="#s-text" class="text"></use>
-    <use xlink:href="#s-text" class="text"></use>
-    <use xlink:href="#s-text" class="text"></use>
-    <use xlink:href="#s-text" class="text"></use>
-  </g>
+	<g class = "g-ants">
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+		<use xlink:href="#s-text" class="text-copy"></use>
+	</g>
 </svg>

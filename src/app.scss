@@ -1,10 +1,64 @@
 //导入bootstrap样式
 @import "~bootstrap/scss/bootstrap";
+@import "~animate.css/animate.min.css";
 @import "./style/98.scss";
+@import "./common/failureEffect.scss";
+
+body{
+  background-color: #111;
+}
 
 .app{
   // padding-top: 55px;
 }
 .pos-ab {
   position: absolute;
+}
+
+
+/* 字体大小 */
+.fs6{font-size: 6px}.fs8{font-size: 8px}.fs10{font-size:10px;}.fs11{font-size:11px;}.fs12{font-size:12px;}.fs13{font-size:13px;}.fs14{font-size:14px;}.fs15{font-size:15px;}.fs16{font-size:16px;}.fs18{font-size:18px;}.fs20{font-size:20px;}.fs24{font-size:24px;}.fs28{font-size:28px;}.fs30{font-size:30px;}.fs32{font-size:32px;}.fs36{font-size:36px;}.fs40{font-size:40px;}.fs48{font-size:48px;}.fs50{font-size:50px;}.fs60{font-size:60px;}.fs80{font-size:80px;}.fs100{font-size:100px;}.fs120{font-size:120px;}
+.fw-400{
+  font-weight: 400;
+}
+.fw-500{
+  font-weight: 500;
+}
+.fw-600{
+  font-weight: 600;
+}
+.fw-700{
+  font-weight: 700;
+}
+
+/* 边距 */
+.mt7{
+	margin-top: 7px;
+}
+.mt8{
+	margin-top: 8px;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.mt30{
+	margin-top: 30px;
+}
+.mt40{
+	margin-top: 40px;
+}
+.mt50{
+	margin-top: 50px;
+}
+.mt60{
+	margin-top: 60px;
+}
+.mt100{
+	margin-top: 200px;
+}
+.mt200{
+	margin-top: 200px;
 }

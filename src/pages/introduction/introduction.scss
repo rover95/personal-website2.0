@@ -1,25 +1,39 @@
 .introduction{
-  height:100vh;
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-webkit-box-pack:center;
-	-ms-flex-pack:center;
-	justify-content:center;
-	-webkit-box-align:center;
-	-ms-flex-align:center;
-	align-items:center;
-	-webkit-perspective:1000px;
-	perspective:1000px;
-	-webkit-transform-style:preserve-3d;
-	transform-style:preserve-3d;
-	position:relative;
-	font-family:'Montserrat';
-  .container {
-    min-width:700px;
-    min-height:350px;
+  // height:50vh;
+  // perspective:1000px;
+  // -webkit-transform-style:preserve-3d;
+  // transform-style:preserve-3d;
+	
+  .container{
+    height: 60vh;
+    .img_bg{
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: -1;
+      width: 100vw;
+      // height: 100vh;
+      filter: blur(4px);
+    }
+  }
+  .stage{
+    perspective:1000px;
+  -webkit-transform-style:preserve-3d;
+  transform-style:preserve-3d;
+  }
+  .card_container {
+    display:flex;
+    box-sizing: border-box;
+    justify-content:center;
+    align-items:center;
+    width:320px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    min-height:160px;
     border-radius:20px;
     position:relative;
+    
     -webkit-transition:1.5s ease-in-out;
     transition:1.5s ease-in-out;
     -webkit-transform-style:preserve-3d;
@@ -30,7 +44,7 @@
     text-align:center;
     width:100%;
     height:100%;
-    padding:20px 50px;
+    padding:10px 20px;
     color:#fff;
     -webkit-transform-style:preserve-3d;
     transform-style:preserve-3d;
@@ -42,90 +56,76 @@
     -webkit-transform:translatez(70px) scale(0.8);
     transform:translatez(70px) scale(0.8);
     line-height:1.5em;
-  }
-  .content h1 {
-    position:relative;
-  }
-  .content p {
-    margin-top:50px;
-    line-height:2em;
-  }
-  .content h1:before {
-    content:"";
-    position:absolute;
-    bottom:-20px;
-    height:3px;
-    background-color:#3e3;
-    width:70px;
-    left:50%;
-    -webkit-transform:translateX(-50%);
-    transform:translateX(-50%);
+    .title {
+      position:relative;
+      font-size: 20px;
+      margin-bottom: 20px;
+      &:before {
+        content:"";
+        position:absolute;
+        bottom:-10px;
+        height:3px;
+        background-color:#1cf;
+        width:70px;
+        left:50%;
+        -webkit-transform:translateX(-50%);
+        transform:translateX(-50%);
+      }
+    }
+    .info{
+      word-break: break-all;
+      font-size: 14px;
+      min-height: 50px;
+    }
+    .cells{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
+      .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        margin: 4px;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #f31;
+        flex-shrink: 0;
+        cursor: pointer;
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+    .p {
+      margin-top:50px;
+      line-height:2em;
+    }
   }
   .front {
     z-index:2;
     background-size:100vh;
     background-size:cover;
-    background-image:url(https://livewallpaperhd.com/wp-content/uploads/2017/07/Dark-Elegant-Wallpaper.jpg);
+    background-color: #111;
+    background-image:url(../../assets/img/wallpaper.jpg)
   }
   .back {
-    background-color:#333;
     -webkit-transform:rotateY(180deg);
     transform:rotateY(180deg);
     z-index:0;
     padding-top:10px;
-    background-image:url(https://userscontent2.emaze.com/images/f9538183-0ff9-478f-b964-c8ab90421e3b/3d28e192fda5c17250f96a2779c84475.jpg);
+    background-color: #222;
   }
-  .container:hover {
+  .card_container:hover {
     -webkit-transform:rotateY(180deg);
     transform:rotateY(180deg);
   }
-  form {
-    text-align:left;
+  .back .title {
+    // margin:0;
   }
-  .back h1 {
-    margin:0;
-  }
-  form label,form input {
-    display:block;
-  }
-  form input,form textarea {
-    background:transparent;
-    border:0;
-    border-bottom:2px solid #444;
-    padding:5px;
-    width:100%;
-    color:#fff
-  }
-  form label {
-    margin:15px 0;
-  }
-  form input[type="submit"] {
-    display:block;
-    width:auto;
-    margin:10px auto;
-    padding:5px 10px;
-    border:3px solid #555;
-    border-radius:4px;
-    color:#fff;
-    cursor:pointer;
-  }
-  /* my button style  */
-  .white-mode {
-    text-decoration:none;
-    padding:7px 10px;
-    background-color:#122;
-    border-radius:3px;
-    color:#FFF;
-    -webkit-transition:.35s ease-in-out;
-    transition:.35s ease-in-out;
-    position:fixed;
-    left:15px;
-    bottom:15px;
-    font-family:"Montserrat";
-  }
-  .white-mode:hover {
-    background-color:#FFF;
-    color:#122;
-  }
+  
 }
 
