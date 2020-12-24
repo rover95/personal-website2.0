@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { smokeTextColor } from '../common/listMap';
 
 import img_rovelast from '../assets/img/rovelast_f.png';
 import img_smoke from '../assets/img/smoke.png';
@@ -122,16 +123,16 @@ const changeTextColor = (() => {
   return () => {
     if (new Date().getTime() - timeStamp < 200) {
       if (Math.random() > 0.6) {
-        text.material.color.r = 0.8;
-        text.material.color.g = 1;
-        text.material.color.b = 0.2;
+        text.material.color.r = smokeTextColor.secondary[0];
+        text.material.color.g = smokeTextColor.secondary[1];
+        text.material.color.b = smokeTextColor.secondary[2];
       }
     } else if (Math.random() > 0.99) {
       timeStamp = new Date().getTime();
     } else {
-      text.material.color.r = 0.3;
-      text.material.color.g = 1;
-      text.material.color.b = 1;
+      text.material.color.r = smokeTextColor.main[0];
+      text.material.color.g = smokeTextColor.main[1];
+      text.material.color.b = smokeTextColor.main[2];
     }
   };
 })();

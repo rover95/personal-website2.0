@@ -1,13 +1,30 @@
-.map-box{
+.nameplace_map{
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
+  .amap-marker-label{
+    border: 0;
+    background-color: transparent;
+  }
   .map{
     position: relative;
     padding: 20px 20px 0;
     background-color: #fff;
     box-shadow: 0 0 20px 3px rgba($color: #000000, $alpha: 0.3);
+    width: 90vw;
+    height: 85vh;
+    .map-container{
+      width: 100%;
+      height: 100%;
+      .marker-label{
+        background-color: #fff;
+        box-shadow: 0px 2px 6px #00000033;
+        border: none!important;
+        padding: 5px 10px;
+        border-radius: 3px;
+      }
+    }
     .cover{
       position: absolute;
       bottom: 0;
@@ -16,6 +33,31 @@
       height: 20px;
       background-color: #fff;
       z-index: 200;
+    }
+    .notes{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 40px;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 30px;
+      max-width: 80vw;
+      background-color: #fff;
+      border-radius: 6px;
+      .cell{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        font-size: 12px;
+        img{
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 }

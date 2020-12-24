@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { init, animate } from '../common/smokeRender';
-import { phrases, menuMap } from '../common/listMap';
+import { phrases, menuMap, toneKeyMap, animateMap } from '../common/listMap';
 import * as Tone from 'tone';
 
 // @ts-ignore
@@ -11,7 +11,12 @@ import TextScramble from '../common/textScramble';
 
 import './index.scss';
 
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.Synth({
+  oscillator: {
+    type: 'square',
+  }
+}).toMaster();
+  // .toDestination();
 
 
 function authorInfoRender(phrases: string[]) {
@@ -29,7 +34,9 @@ function authorInfoRender(phrases: string[]) {
 
 function keyboardListen() {
   document.addEventListener('keydown', (e) => {
-    console.log(e.key);
+    const key: string = e.key;
+    // @ts-ignore
+    synth.triggerAttackRelease(toneKeyMap.get(key), '16n', Tone.now(), 0.2);
   });
 }
 
@@ -48,22 +55,19 @@ function Index () {
     const now = Tone.now();
     setShowMenu(!showMenu);
     setRenderMenu(true);
-    // synth.triggerAttackRelease('C4', '8n');
-    // synth.triggerAttackRelease('G4', '8n');
     if(!showMenu){
-      synth.triggerAttackRelease('E4', '16n', now + 0.4);
-      synth.triggerAttackRelease('E4', '16n', now + 0.5);
-      synth.triggerAttackRelease('E4', '16n', now + 0.6);
-      synth.triggerAttackRelease('E4', '16n', now + 0.7);
+      synth.triggerAttackRelease('E6', '16n', now + 0.1, 0.2);
+      synth.triggerAttackRelease('E6', '16n', now + 0.2, 0.2);
+      synth.triggerAttackRelease('C6', '16n', now + 0.3, 0.2);
+      synth.triggerAttackRelease('D6', '16n', now + 0.4, 0.2);
     }else{
-      // synth.triggerAttackRelease('c3', '16n', now + 0.4);
-      // synth.triggerAttackRelease('c3', '0.5s', now + 0.4);
-      synth.triggerAttack('D4', now);
-      synth.triggerAttack('F4', now + 0.5);
-      synth.triggerAttack('A4', now + 1);
-      synth.triggerAttack('C4', now + 1.5);
-      synth.triggerAttack('E4', now + 2);
-      // @ts-ignore
+      synth.triggerAttackRelease('D6', '16n', now + 0);
+      synth.triggerAttackRelease('C6', '16n', now + 0.1);
+      synth.triggerAttackRelease('E6', '16n', now + 0.2);
+      synth.triggerAttackRelease('E6', '16n', now + 0.3);
+
+      // synth.triggerAttack('C4', now + 1);
+      // synth.triggerAttackRelease('E4', '2n', now + 1.2);
     }
     
 
@@ -85,9 +89,9 @@ function Index () {
                 <div
                   key={val.url}
                   onClick={(e)=>onMenuClick(e,val)}
-                  className={`cell animate__animated animate__${
-                    showMenu ? 'zoomInDown delay' + idx : 'zoomOutUp'
-                  }`}
+                  className={`cell animate__animated ${
+                    showMenu ? animateMap.in[idx] : animateMap.out[idx]
+                  } delay${idx}`}
                 >
                   {val.label}
                 </div>

@@ -1,10 +1,83 @@
-.photography {
-  .container {
-    padding: 40px 80px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.nameplace_photography {
+  .photo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    .photo-scene{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200vw;
+      height: 200vh;
+      .layer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200vw;
+        height: 200vh;
+      }
+      .cells{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 200vw;
+        height: 200vh;
+      }
+      .img-cell{
+        display: inline-block;
+        width: auto;
+        // max-width: 40vw;
+        height: 20vw;
+        max-height: 300px;
+        margin: 20px;
+        background-color: #fff;
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  .img-detail{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000099;
+    img{
+      height: 80vh;
+    }
   }
 }
+@media (max-width: 768px) {
+    .nameplace_photography {
+      .photo-container{
+        .photo-scene {
+          .img-cell{
+            height: 100px;
+            margin: 5px;
+          }
+        }
+      }
+      .img-detail{
+        img{
+          width: 90vw;
+          height: auto;
+        }
+      }
+    }
+  }

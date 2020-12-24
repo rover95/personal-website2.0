@@ -17,7 +17,7 @@ function Introduction () {
   return (
     <div className="introduction">
       <div className="container">
-        <div>info</div>
+        <div>1</div>
         {/* <img
           className="img_bg"
           src="https://raw.githubusercontent.com/rover95/image/master/img/20201220173825.png"

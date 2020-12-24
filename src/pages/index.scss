@@ -11,41 +11,47 @@
 .menu-position{
   position: fixed;
   left: 50%;
-  top: 30px;
+  top: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 .menu-box{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   .cell{
     padding: 10px 10px;
-    margin: 0 10px;
+    margin: 20px 10px;
     color: #fff;
+    font-size: 14px;
     cursor: pointer;
+    background-color: #00000055;
+    border-radius: 8px;
+    width: 140px;
+    text-align: center;
   }
   .delay1{
-    animation-delay: 0.1s;
+    animation-delay: 0s;
   }
   .delay2{
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
   }
   .delay3{
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
   }
   .delay4{
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
   }
 
 }
 
-@media (max-width: 768px) {
-    .menu-box {
-      .cell {
-        padding: 10px 0px;
-        margin: 0 10px;
-        font-size: 10px;
-        width: auto;
-      }
-    }
-  }
+// @media (max-width: 768px) {
+//     .menu-box {
+//       .cell {
+//         padding: 10px 0px;
+//         margin: 0 10px;
+//         font-size: 10px;
+//         // width: auto;
+//       }
+//     }
+//   }

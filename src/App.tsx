@@ -11,8 +11,10 @@ import Index from './pages';
 
 import './app.scss';
 
+import logPrint from './common/log_info_print';
 
 function App() {
+  logPrint();
   const [name, setName] = useState('rovelast');
   return (
     <BrowserRouter>

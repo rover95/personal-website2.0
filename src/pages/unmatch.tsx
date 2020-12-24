@@ -1,7 +1,14 @@
 import React, { useState,useEffect } from 'react';
+import * as Tone from 'tone';
 import img_404 from '../assets/img/404.svg';
 
 import './unmatch.scss';
+
+let noise:any;
+
+// setTimeout(() => {
+//   noise.stop();
+// }, 3000);
 
 function getTime() {
   const t = new Date();
@@ -15,10 +22,16 @@ function completionTime(str: number) {
 
 function Unmatch() {
   const [time, setTime] = useState(getTime());
+  
   useEffect(()=>{
     setInterval(() => {
       setTime(getTime());
     }, 1000);
+    noise = new Tone.Noise().toDestination().start();
+    noise.type = 'pink';
+    return () => {
+      noise.stop();
+    };
   },[]);
   return (
     <div className="nameplace_404">
