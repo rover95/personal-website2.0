@@ -27,11 +27,11 @@ const windowArr: any[] = [
     id: 'w1',
     title: 'www',
     zIndex: 0,
-    url:'https://www.zcool.com.cn/',
+    url: 'https://www.zcool.com.cn/',
     content: (
-      <div style={{ width: '100%', height: '100%'}}>
+      <div style={{ width: '100%', height: '100%' }}>
         <iframe
-          src="https://www.zcool.com.cn/"
+          src="https://github.com/facebook/create-react-app"
           style={{ width: '100%', height: '100%' }}
         ></iframe>
       </div>
@@ -41,16 +41,18 @@ const windowArr: any[] = [
     id: 'w2',
     title: '新建窗口',
     zIndex: 0,
-    content: <div>asdqwe</div>,
+    url:'http://rovelast.com/',
+    content: <Browser url="http://rovelast.com/"></Browser>,
     height: 200,
     width: 400,
   },
   {
     id: 'w3',
-    title: 'IE 5.0 浏览器',
+    title: '隐藏字符加密',
     zIndex: 0,
-    content: <Browser></Browser>,
-    height: 200,
+    url: 'http://zero.rovelast.com/',
+    content: <Browser url="http://zero.rovelast.com/"></Browser>,
+    height: 600,
     width: 400,
   },
 ];
