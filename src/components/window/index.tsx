@@ -36,7 +36,6 @@ const Win: FC<Props> = ({ title, id, left, top, width, height, zIndex, children,
       if (bodyWidth && bodyHeight){
         offsetWidth = bodyWidth;
         offsetHeight = bodyHeight;
-        console.log(offsetHeight);
       }
     }
   },[]);

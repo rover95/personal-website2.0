@@ -2,7 +2,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~animate.css/animate.min.css";
 @import "./style/98.scss";
-@import "./common/failureEffect.scss";
+@import "./style/failureEffect.scss";
+@import "./style/fixed-positioning.scss";
 
 body{
   background-color: #111;

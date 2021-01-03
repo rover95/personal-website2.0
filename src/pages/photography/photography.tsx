@@ -15,6 +15,7 @@ function Photography () {
   const [currentImg, setCurrentImg] = useState('');
   useEffect(()=>{
     const scene = document.getElementById('scene');
+     //@ts-ignore
     const parallax = new Parallax(scene);
     
   },[]);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Redirect, Switch, HashRouter } from 'react-router-dom';
 import Tabs from './components/tabs';
+import Router from './containers/router';
 import Home from './pages/home/home';
 import Photography from './pages/photography/photography';
 import Footmark from './pages/footmark/footmark';
@@ -17,7 +18,7 @@ function App() {
   logPrint();
   const [name, setName] = useState('rovelast');
   return (
-    <BrowserRouter>
+    <Router>
       {/* <Redirect path="/" to="/#" /> */}
       <Switch>
         <Route path="/" exact component={Index}></Route>
@@ -39,7 +40,7 @@ function App() {
           </div>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 

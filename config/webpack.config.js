@@ -8,7 +8,7 @@ module.exports = {
   entry: resolve(__dirname, "../src/index.tsx"),
   output: {
     path: resolve(__dirname, "../dist"),
-    filename: "[name].js",
+    filename: "[name].[hash].js",
     // publicPath: "/assets/",
   },
 
@@ -61,7 +61,7 @@ module.exports = {
   plugins: [
     new FriendlyErrorsWebpackPlugin(),
     new htmlWebpackPlugin({
-      template: "index.ejs",
+      template: "index.ejs"
     }),
     new copyWebpackPlugin({
       patterns: [

@@ -10,7 +10,7 @@ interface Menu {
   label:string;
   url: string;
 }
-interface ContactType {
+export interface ContactType {
   label: string;
   value: string;
   icon: any;
