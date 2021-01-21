@@ -68,9 +68,6 @@ function Introduction () {
   return (
     <div
       className="nameplace_introduction"
-      onClick={() => {
-        console.log(ref);
-      }}
     >
       {isRender ? (
         <div className="introduction-container">
