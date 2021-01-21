@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { init, animate } from '../common/smokeRender';
 import { phrases, menuMap, toneKeyMap, animateMap } from '../common/listMap';
+import { sha256 } from 'js-sha256';
 import isPC from '../utils/isPC';
 // @ts-ignore
 import Parallax from 'parallax-js';
@@ -49,6 +50,7 @@ function Index () {
   const [showMenu, setShowMenu] = useState(false);
   const [renderMenu, setRenderMenu] = useState(false);
   useEffect(() => {
+    const thatIsRight = sha256('useMe');
     if (!isPC()) {
       //菜单视差
       const scene = document.getElementById('scene');

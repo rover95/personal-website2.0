@@ -66,9 +66,7 @@ function Introduction () {
     }
   }
   return (
-    <div
-      className="nameplace_introduction"
-    >
+    <div className="nameplace_introduction">
       {isRender ? (
         <div className="introduction-container">
           <div className="skrollr-box">
@@ -152,7 +150,8 @@ function Introduction () {
                 </div>
               </div>
               <div className="gap gap-100 p-6">
-                <h2>君子固穷</h2>
+                <h3>头衔</h3>
+                <p>当代思考家、业余记者、摄影爱好者、优酷会员、饿了么超级VIP</p>
               </div>
               <div
                 className="content gap-200"
@@ -162,8 +161,7 @@ function Introduction () {
                 }}
               >
                 <div className="p-2" data-anchor-target="#content-bg-1" data-center-top="left:-50%;top:30%;transform: translateX(-50%);" data-top-top="left:50%;" data-bottom-bottom="left:50%;" data-center-bottom="left:150%;">
-                  <h3>头衔</h3>
-                  <p>当代思考家、业余记者、摄影爱好者、优酷会员、饿了么超级VIP</p>
+                  <h2>君子固穷</h2>
                 </div>
               </div>
               <div
@@ -175,7 +173,7 @@ function Introduction () {
               >
                 <h1>IT行业之底层民工</h1>
                 <p>半路出家，成为了一名简易的web开发者</p>
-                <p>极为擅长CV操作x</p>
+                <p>极为擅长CV操作</p>
               </div>
               <div className="content gap-100 p-4" id="content-bg-3">
                 <div className="text-c" data-anchor-target="#content-bg-3" data-bottom-top="top:100%;left:50%;transform: translateX(-50%)" data-bottom-bottom="top:20%;" data-center-bottom="display:block;" data-top-bottom="top:-100%;display:none;">
@@ -199,8 +197,6 @@ function Introduction () {
                 </div>
               </div>
               <div className="p7 content" id="done">
-                <div>用ASCII字符，继续书写我的故事</div>
-
                 <div className="foot">
                   <h2>单身</h2>
                   <p>寻觅佳人</p>

@@ -18,7 +18,7 @@ function Card({ info, setInfo }: any) {
           <div className="front side">
             <div className="card_content">
               <div className="title">Contact Information</div>
-              <div className="fs30 mt50">Contact Me</div>
+              <div className="fs30 mt50">Hover Me</div>
             </div>
           </div>
           <div className="back side">

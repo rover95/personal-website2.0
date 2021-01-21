@@ -97,8 +97,8 @@ export const contactIconMap:ContactType[] = [
 export const phrases: string[] = [
   'Hi, man',
   'welcome to the remote corner of the Internet',
-  'View the code on ',
-  'https://github.com/rover95/personal-website2.0',
+  'I wanna play a game',
+  '7cea7479b0ef2b3287d5abdee3b5f51a9f80fb7eeba87dca46e67b22b5cb51f2',
   '@rovelast',
   ' ',
 ];
