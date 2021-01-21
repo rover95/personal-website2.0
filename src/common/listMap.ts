@@ -9,6 +9,7 @@ import icon_zhihu from '../assets/img/icon/zhihu.svg';
 interface Menu {
   label:string;
   url: string;
+  order:number;
 }
 export interface ContactType {
   label: string;
@@ -18,26 +19,31 @@ export interface ContactType {
 }
 
 // 菜单
-export const menuMap:Menu[] = [
+export const menuMap: Menu[] = [
   {
     label: 'HOME',
     url: '/',
+    order: 0,
   },
   {
     label: 'PHOTO',
     url: '/photography',
+    order: 2,
   },
   {
     label: 'ME',
     url: '/introduction',
+    order: 1,
   },
   {
     label: 'FOOTMARK',
     url: '/footmark',
+    order: 3,
   },
   {
     label: 'PROJECT',
     url: '/project',
+    order: 4,
   },
 ];
 
@@ -63,7 +69,7 @@ export const contactIconMap:ContactType[] = [
   },
   {
     label: '邮箱',
-    value: 'cm92ZWxhc4RAZ21haWwuY29t',
+    value: 'rovelast@gmail.com',
     icon: icon_email,
     url: '',
   },

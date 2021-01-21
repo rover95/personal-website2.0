@@ -96,16 +96,18 @@
     background-image: url(../../assets/img/wallpaper.jpg);
   }
   .back {
-    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     z-index: 0;
     padding-top: 10px;
     background-color: #222;
   }
-  .card_container:hover {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+  .stage:hover{
+    .card_container {
+      transform: rotateY(180deg);
+      transition: transform 1s;
+    }
   }
+  
   .back .title {
     // margin:0;
   }

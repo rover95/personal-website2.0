@@ -11,8 +11,8 @@
     height: 54px;
     overflow: hidden;
     z-index: 99;
-    .container {
-      width: 100vw;
+    .row-container {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;

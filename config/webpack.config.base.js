@@ -23,7 +23,7 @@ module.exports = {
       { enforce: "pre", test: /\.(js|tsx)$/, loader: "source-map-loader" },
       {
         test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", { loader: "css-loader", options:{modules: false}}, "sass-loader"],
       },
       {
         test: /\.(jpg|jpeg|png|svg|gif|woff|woff2|ttf)$/,

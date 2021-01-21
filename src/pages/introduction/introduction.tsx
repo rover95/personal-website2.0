@@ -6,10 +6,35 @@ import isPC from '../../utils/isPC';
 // @ts-ignore
 import skrollr from '../../common/skrollr.min.js';
 
+
 let skrollrExample:any;
 
 import './introduction.scss';
 
+const imgMap = [
+  {
+    path: './static/img/bg-img/5.jpg',
+  },
+  {
+    path: './static/img/bg-img/2.jpg',
+  },
+  {
+    path: './static/img/bg-img/6.jpg',
+  },
+  {
+    path: './static/img/bg-img/4.jpg',
+  },
+  {
+    path: './static/img/bg-img/4.jpg',
+  },
+  {
+    path: './static/img/bg-img/5.jpg',
+  },
+
+  {
+    path: './static/img/bg-img/7.jpg',
+  },
+];
 
 function Introduction () {
   const [info, setInfo] = useState(contactIconMap[3]);
@@ -41,97 +66,151 @@ function Introduction () {
     }
   }
   return (
-    <div className="nameplace_introduction">
+    <div
+      className="nameplace_introduction"
+      onClick={() => {
+        console.log(ref);
+      }}
+    >
       {isRender ? (
         <div className="introduction-container">
           <div className="skrollr-box">
-            <div className="parallax-image-wrapper parallax-image-wrapper-100" data-anchor-target="#head-bg + .gap" data-bottom-top="transform:translate3d(0px, 200%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)">
+            {/* 背景图 */}
+            <div className="parallax-image-wrapper parallax-image-wrapper-100" style={{ filter: 'dropShadow: 10px 10px 10px 10px #000' }} data-anchor-target="#head-bg" data-bottom-top="transform:translate3d(0px, 200%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)">
               <div
                 className="parallax-image parallax-image-100"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/12.jpg)',
+                  backgroundImage: `url(${imgMap[0].path})`,
                 }}
-                data-anchor-target="#head-bg + .gap"
+                data-anchor-target="#head-bg"
                 data-bottom-top="transform: translate3d(0px, -100%, 0px);"
                 data-top-bottom="transform: translate3d(0px, 100%, 0px);"
               ></div>
             </div>
 
-            <div className="parallax-image-wrapper parallax-image-wrapper-100" data-anchor-target="#content-bg-1 + .gap" data-bottom-top="transform:translate3d(0px, 200%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)">
+            <div className="parallax-image-wrapper parallax-image-wrapper-100" data-anchor-target="#head-bg2" data-bottom-top="transform:translate3d(0px, 200%, 0px);filter: grayscale(-100%);" data-top-bottom="transform:translate3d(0px, 0%, 0px);filter: grayscale(100%);">
               <div
                 className="parallax-image parallax-image-100"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/48.jpg)',
+                  backgroundImage: `url(${imgMap[1].path})`,
                 }}
-                data-anchor-target="#content-bg-1 + .gap"
-                data-bottom-top="transform: translate3d(0px, -80%, 0px);"
-                data-top-bottom="transform: translate3d(0px, 80%, 0px);"
+                data-anchor-target="#head-bg2"
+                data-bottom-top="transform: translate3d(0px, -70%, 0px);"
+                data-top-bottom="transform: translate3d(0px, 70%, 0px);"
               ></div>
             </div>
 
-            <div className="parallax-image-wrapper parallax-image-wrapper-50" data-anchor-target="#content-bg-2 + .gap" data-bottom-top="transform:translate3d(0px, 300%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)">
+            <div className="parallax-image-wrapper parallax-image-wrapper-75" data-anchor-target="#content-bg-2" data-bottom-top="transform:translate3d(0px, 233%, 0px);filter: grayscale(-100%);" data-top-bottom="transform:translate3d(0px, 0%, 0px);filter: grayscale(200%);">
+              <div
+                className="parallax-image parallax-image-75"
+                style={{
+                  backgroundImage: `url(${imgMap[2].path})`,
+                }}
+                data-anchor-target="#content-bg-1 + .gap"
+                data-bottom-top="transform: translate3d(0px, -15%, 0px);"
+                data-top-bottom="transform: translate3d(0px, 75%, 0px);"
+              ></div>
+            </div>
+
+            <div className="parallax-image-wrapper parallax-image-wrapper-50" data-anchor-target="#content-bg-3 + .gap" data-bottom-top="transform:translate3d(0px, 300%, 0px)" data-top-bottom="transform:translate3d(0px, 0%, 0px)">
               <div
                 className="parallax-image parallax-image-50"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/3.jpg)',
+                  backgroundImage: `url(${imgMap[3].path})`,
                 }}
-                data-anchor-target="#content-bg-2 + .gap"
+                data-anchor-target="#content-bg-3 + .gap"
                 data-bottom-top="transform: translate3d(0px, -60%, 0px);"
                 data-top-bottom="transform: translate3d(0px, 60%, 0px);"
               ></div>
             </div>
 
+            {/* 主页面 */}
             <div className="skrollr-body" id="skrollr-body">
-              <div className="header" id="head-bg"></div>
               <div
+                id="head-bg"
                 className="gap gap-100 flex-box"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/12.jpg)',
+                  backgroundImage: `url(${imgMap[0].path})`,
                 }}
               >
-                {PC ? (
-                  <div className="head-text" data-0="display:block;left:50%;top:40%;transform: translateX(-50%);transform-origin:0 0;" data-300="top:-50%;">
-                    {navigator.userAgent}
-                  </div>
-                ) : (
-                  <div className="head-text">{navigator.userAgent}</div>
-                )}
-              </div>
-              <div className="content gap-200" id="content-bg-1">
-                <p>Landjaeger chicken ham fatback sausage hamburger, tri-tip capicola pastrami pancetta ribeye turducken. Rump shank turkey pig kevin sausage meatloaf tenderloin drumstick short ribs short loin. Prosciutto spare ribs chuck, pork strip steak pork chop swine bacon turkey shoulder andouille. Jowl landjaeger chicken corned beef. Ham hock kielbasa pancetta ground round sausage. Spare ribs porchetta pastrami filet mignon drumstick ball tip. Beef ribs prosciutto kevin, landjaeger shoulder ham hock ham brisket sirloin chuck t-bone drumstick kielbasa pork chop.</p>
+                <div className="head-text t-center" data-0="display:block;left:50%;top:40%;transform: translateX(-50%);transform-origin:0 0;" data-300="top:-50%;">
+                  <h1>{Math.round((new Date().getTime() - 799975200000) / 3600 / 1000)} HOURS AGO</h1>
+                  <p>I was born</p>
+                </div>
               </div>
               <div
-                className="gap gap-100"
+                className="gap gap-100 p-1"
+                id="head-bg2"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/48.jpg)',
+                  backgroundImage: `url(${imgMap[1].path})`,
                 }}
               >
-                {PC ? (
-                  <div className="body-text" data-anchor-target="#content-bg-1" data-center-top="left:-50%;top:30%;transform: translateX(-50%);" data-top-top="left:50%;" data-bottom-bottom="left:50%;" data-center-bottom="left:150%;">
-                    asdqweqwe
-                  </div>
-                ) : (
-                  <div className="body-text">
-                    asdqweqwe
-                  </div>
-                )}
+                <div className="position">
+                  <h5>yú yòu shí jí shì xué </h5>
+                  <h1>余幼时即嗜学</h1>
+                  <h6>when I was a child, I loved learning</h6>
+                  <p>古今中外，天文地理，阴阳五行，投资理财</p>
+                  <p>奇门遁甲，看相占卜</p>
+                  <p>均有涉猎</p>
+                </div>
               </div>
-              <div className="content gap-100" id="content-bg-2">
-                <div id="properties" data-1700="top:100%;" data-2200="top:20%;" data-3000="display:block;" data-3700="top:-100%;display:none;">
-                  <h2>all numeric properties</h2>
-                  <p>width, height, padding, font-size, z-index, blah blah blah</p>
+              <div className="gap gap-100 p-6">
+                <h2>君子固穷</h2>
+              </div>
+              <div
+                className="content gap-200"
+                id="content-bg-1"
+                style={{
+                  backgroundImage: `url(./static/img/bg-img/3.jpg)`,
+                }}
+              >
+                <div className="p-2" data-anchor-target="#content-bg-1" data-center-top="left:-50%;top:30%;transform: translateX(-50%);" data-top-top="left:50%;" data-bottom-bottom="left:50%;" data-center-bottom="left:150%;">
+                  <h3>头衔</h3>
+                  <p>当代思考家、业余记者、摄影爱好者、优酷会员、饿了么超级VIP</p>
+                </div>
+              </div>
+              <div
+                id="content-bg-2"
+                className="gap gap-75 p-3"
+                style={{
+                  backgroundImage: `url(${imgMap[2].path})`,
+                }}
+              >
+                <h1>IT行业之底层民工</h1>
+                <p>半路出家，成为了一名简易的web开发者</p>
+                <p>极为擅长CV操作x</p>
+              </div>
+              <div className="content gap-100 p-4" id="content-bg-3">
+                <div className="text-c" data-anchor-target="#content-bg-3" data-bottom-top="top:100%;left:50%;transform: translateX(-50%)" data-bottom-bottom="top:20%;" data-center-bottom="display:block;" data-top-bottom="top:-100%;display:none;">
+                  <div>
+                    <h1>安能摧眉折腰事权贵？</h1>
+                    <p>假装为资本家卖命的同时，背后偷偷摸索社会主义现代化建设的发展之路</p>
+                  </div>
                 </div>
               </div>
               <div
                 className="gap gap-50 flex-box"
                 style={{
-                  backgroundImage: 'url(./static/img/photo/3.jpg)',
+                  backgroundImage: `url(${imgMap[3].path})`,
                 }}
               >
-                <div className="f-box">333333</div>
+                <div className="p-5">
+                  <p>年少时的理想亦不曾忘</p>
+                  <p>鲜衣怒马</p>
+                  <h1>浪迹天涯</h1>
+                  {/* <p>愿千帆归来，仍是少年</p> */}
+                </div>
               </div>
-              <div className="content" id="done">
-                thanks!
+              <div className="p7 content" id="done">
+                <div>用ASCII字符，继续书写我的故事</div>
+
+                <div className="foot">
+                  <h2>单身</h2>
+                  <p>寻觅佳人</p>
+                  <p>请适龄异性想办法联系我</p>
+                  <i className="hide">“ 英雄，愿你有一份不悔的爱情 ”</i>
+                </div>
+
                 <div className="card-position">
                   <ContactCard info={info} setInfo={setInfo}></ContactCard>
                 </div>

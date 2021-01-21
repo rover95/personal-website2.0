@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore
-import Parallax from '../../common/parallax.min.js';
+import Parallax from 'parallax-js';
 import Card from '../../components/parallax';
 
 import './photography.scss';
@@ -30,18 +30,8 @@ function Photography () {
     <div className="nameplace_photography">
       <div className="photo-container">
         {/* <Card image="https://livewallpaperhd.com/wp-content/uploads/2017/07/Dark-Elegant-Wallpaper.jpg"></Card> */}
-        <div
-          id="scene"
-          className="photo-scene"
-          data-pointer-events="true"
-          data-x-origin="0.5"
-          data-y-origin="0.5"
-          data-scalar-y="80.0"
-          data-scalar-x="40.0"
-          data-friction-x="0.15"
-          data-friction-y="0.15"
-        >
-          <div className="layer" data-depth="1.0" >
+        <div id="scene" className="photo-scene" data-pointer-events="true" data-x-origin="0.5" data-y-origin="0.5" data-scalar-y="80.0" data-scalar-x="40.0" data-friction-x="0.15" data-friction-y="0.15">
+          <div className="layer" data-depth="1">
             <div className="cells">
               {arr.map((val, idx) => {
                 return (

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { init, animate } from '../common/smokeRender';
 import { phrases, menuMap, toneKeyMap, animateMap } from '../common/listMap';
+import isPC from '../utils/isPC';
+// @ts-ignore
+import Parallax from 'parallax-js';
 import * as Tone from 'tone';
 
 // @ts-ignore
@@ -35,8 +38,9 @@ function authorInfoRender(phrases: string[]) {
 function keyboardListen() {
   document.addEventListener('keydown', (e) => {
     const key: string = e.key;
+    const now = Tone.now();
     // @ts-ignore
-    synth.triggerAttackRelease(toneKeyMap.get(key), '16n', Tone.now(), 0.2);
+    synth.triggerAttackRelease(toneKeyMap.get(key), '16n', now, 0.2);
   });
 }
 
@@ -44,36 +48,37 @@ function Index () {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const [renderMenu, setRenderMenu] = useState(false);
-  useEffect(()=>{
-    keyboardListen();
+  useEffect(() => {
+    if (!isPC()) {
+      //菜单视差
+      const scene = document.getElementById('scene');
+      //@ts-ignore
+      const parallax = new Parallax(scene);
+    }
+    keyboardListen(); //弹奏按键监听
     init('canvas_box');
-    animate();
-    authorInfoRender(phrases);
+    animate(); // 烟雾动画
+    authorInfoRender(phrases);//动态文字
   },[]);
   function onPageClick(e:any) {
-    // history.push('/introduction');
     const now = Tone.now();
+    console.log(now);
+    
     setShowMenu(!showMenu);
     setRenderMenu(true);
-    if(!showMenu){
+    if(!showMenu){  //弹出音效
       synth.triggerAttackRelease('E6', '16n', now + 0.1, 0.2);
       synth.triggerAttackRelease('E6', '16n', now + 0.2, 0.2);
       synth.triggerAttackRelease('C6', '16n', now + 0.3, 0.2);
       synth.triggerAttackRelease('D6', '16n', now + 0.4, 0.2);
     }else{
-      synth.triggerAttackRelease('D6', '16n', now + 0);
-      synth.triggerAttackRelease('C6', '16n', now + 0.1);
-      synth.triggerAttackRelease('E6', '16n', now + 0.2);
-      synth.triggerAttackRelease('E6', '16n', now + 0.3);
-
-      // synth.triggerAttack('C4', now + 1);
-      // synth.triggerAttackRelease('E4', '2n', now + 1.2);
+      
+      synth.triggerAttackRelease('D6', '16n', now + 0, 0.2);
+      synth.triggerAttackRelease('C6', '16n', now + 0.1, 0.2);
+      synth.triggerAttackRelease('E6', '16n', now + 0.2, 0.2);
+      synth.triggerAttackRelease('E6', '16n', now + 0.3, 0.2);
     }
-    
-
-    // synth.triggerAttackRelease('C4', '2n', now);
-    // synth.triggerAttackRelease('E4', '16n', now + 0.5);
-    // synth.triggerAttackRelease('G5', '8n', now + 1);
+   
   }
   function onMenuClick(e:any, val:any) {
     e.stopPropagation();
@@ -82,23 +87,17 @@ function Index () {
   return (
     <div id="canvas_box" onClick={onPageClick}>
       <div className="menu-position">
-        {renderMenu ? (
-          <div className="menu-box">
-            {menuMap.slice(1).map((val,idx) => {
+        <div className="menu-box" style={{display:renderMenu?'block':'none'}} id="scene" data-pointer-events="true" data-invert-y="false" data-x-origin="0.5" data-y-origin="0.5" data-scalar-y="80.0" data-scalar-x="40.0" data-friction-x="0.15" data-friction-y="0.15">
+            {menuMap.slice(1).sort((a,b)=>a.order-b.order).map((val, idx) => {
               return (
-                <div
-                  key={val.url}
-                  onClick={(e)=>onMenuClick(e,val)}
-                  className={`cell animate__animated ${
-                    showMenu ? animateMap.in[idx] : animateMap.out[idx]
-                  } delay${idx}`}
-                >
-                  {val.label}
+                <div key={val.url} className={`cell-position`} data-depth={idx + 1}>
+                  <div onClick={(e) => onMenuClick(e, val)} className={`cell animate__animated ${showMenu ? animateMap.in[idx] : animateMap.out[idx]} delay${idx}`}>
+                    {val.label}
+                  </div>
                 </div>
               );
             })}
           </div>
-        ) : null}
       </div>
 
       <div id="author_info" className="index-info"></div>
