@@ -19,7 +19,7 @@ const Panorama = (props: any) => {
   // 自动转动
   const animate = () => {
     requestAnimationFrame(animate);
-    // mesh.rotation.y += 0.001;
+    mesh.rotation.y += 0.001;
     renderer.render(scene, camera);
   };
   // 缩放实现
@@ -42,16 +42,6 @@ const Panorama = (props: any) => {
     if(!moving) return;
     camera.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), e.movementX / 500);
     camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), e.movementY / 500);
-    // endX = e.clientX;
-    // endY = e.clientY;
-    // const x = endX - startX;
-    // const y = endY - startY;
-    // // camera.rotation.x = camera.rotation.x + y * 0.001;
-    // // camera.rotation.y = camera.rotation.y + x * 0.001;
-    // mesh.rotateOnAxis(new THREE.Vector3(0, 1, 0), -x/500);
-    // mesh.rotateOnAxis(new THREE.Vector3(1, 0, 0), -y/500);
-    // startX = endX;
-    // startY = endY;
   };
   const onMouseUp = ()=>{
     moving = false;
