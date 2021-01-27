@@ -28,6 +28,7 @@ function Unmatch() {
       setTime(getTime());
     }, 1000);
     noise = new Tone.Noise().toDestination().start();
+    noise.volume.value = -20;
     noise.type = 'pink';
     return () => {
       noise.stop();

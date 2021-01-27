@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 // @ts-ignore
 import Parallax from 'parallax-js';
 import Card from '../../components/parallax';
@@ -11,6 +12,7 @@ for (let i = 1; i < 60; i++) {
   arr.push(i);
 }
 function Photography () {
+  const history = useHistory();
   const [showCurrentImg, setShowCurrentImg] = useState(false);
   const [currentImg, setCurrentImg] = useState('');
   useEffect(()=>{
@@ -26,12 +28,18 @@ function Photography () {
   function onImgCoverClick(){
     setShowCurrentImg(false);
   }
+  function onPanoramaClick(){
+    history.push('./panorama');
+  }
   return (
     <div className="nameplace_photography">
       <div className="photo-container">
         {/* <Card image="https://livewallpaperhd.com/wp-content/uploads/2017/07/Dark-Elegant-Wallpaper.jpg"></Card> */}
-        <div id="scene" className="photo-scene" data-pointer-events="true" data-x-origin="0.5" data-y-origin="0.5" data-scalar-y="80.0" data-scalar-x="40.0" data-friction-x="0.15" data-friction-y="0.15">
+        <div id="scene" className="photo-scene" data-pointer-events="true" data-x-origin="0.5" data-y-origin="0.5" data-scalar-y="90.0" data-scalar-x="40.0" data-friction-x="0.15" data-friction-y="0.15">
           <div className="layer" data-depth="1">
+            <div className="panorama-btn" onClick={onPanoramaClick}>
+              全景图
+            </div>
             <div className="cells">
               {arr.map((val, idx) => {
                 return (

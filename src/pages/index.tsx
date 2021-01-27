@@ -64,7 +64,6 @@ function Index () {
   },[]);
   function onPageClick(e:any) {
     const now = Tone.now();
-    console.log(now);
     
     setShowMenu(!showMenu);
     setRenderMenu(true);

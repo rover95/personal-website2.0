@@ -4,6 +4,7 @@ import Tabs from './components/tabs';
 import Router from './containers/router';
 import Home from './pages/home/home';
 import Photography from './pages/photography/photography';
+import Panorama from './pages/panorama/panorama';
 import Footmark from './pages/footmark/footmark';
 import Introduction from './pages/introduction/introduction';
 import Project from './pages/project/project';
@@ -28,12 +29,9 @@ function App() {
             <Switch>
               {/* <Route path="/home" exact component={Index}></Route> */}
               <Route path="/photography" exact component={Photography}></Route>
+              <Route path="/panorama" exact component={Panorama}></Route>
               <Route path="/footmark" exact component={Footmark}></Route>
-              <Route
-                path="/introduction"
-                exact
-                component={Introduction}
-              ></Route>
+              <Route path="/introduction" exact component={Introduction}></Route>
               <Route path="/project" exact component={Project}></Route>
               <Route component={Unmatch} />
             </Switch>

@@ -7,8 +7,6 @@ import './index.scss';
 
 function Tabs (props:any) {
   const location = useLocation();
-  console.log(props, location);
-  
   const [menu] = useState(menuMap);
   const [width, setWidth] = useState(document.body.clientWidth);
   const currentIdx = menu.findIndex((val) => (val.url === location.pathname)); 

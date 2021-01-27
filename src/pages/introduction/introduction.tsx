@@ -173,6 +173,7 @@ function Introduction () {
               >
                 <h1>IT行业之底层民工</h1>
                 <p>半路出家，成为了一名简易的web开发者</p>
+                <p>前端切图仔，会写点代码的美工</p>
                 <p>极为擅长CV操作</p>
               </div>
               <div className="content gap-100 p-4" id="content-bg-3">
@@ -200,7 +201,7 @@ function Introduction () {
                 <div className="foot">
                   <h2>单身</h2>
                   <p>寻觅佳人</p>
-                  <p>请适龄异性想办法联系我</p>
+                  <p>适龄异性请想办法联系我</p>
                   <i className="hide">“ 英雄，愿你有一份不悔的爱情 ”</i>
                 </div>
 
