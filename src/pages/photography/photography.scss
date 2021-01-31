@@ -17,12 +17,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      top: -90vh;
       width: 200vw;
       height: 200vh;
       .layer{
         display: flex;
         justify-content: center;
         align-items: center;
+        
         width: 200vw;
         height: 200vh;
         .panorama-btn{
