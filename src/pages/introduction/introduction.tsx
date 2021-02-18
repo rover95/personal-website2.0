@@ -12,7 +12,7 @@ let skrollrExample:any;
 import './introduction.scss';
 
 function getImgSrc(num:number){
-  return `./static/img/bg-img/${num}.jpg`
+  return `./static/img/bg-img/${num}.jpg`;
 }
 
 function Introduction () {
@@ -21,7 +21,7 @@ function Introduction () {
   const [slideBox,setSlideBox] = useState({
     l_hover: false,
     r_hover: false
-  })
+  });
   const [PC,setPC] = useState(isPC());
   useEffect(()=>{
     if(PC){
@@ -35,7 +35,7 @@ function Introduction () {
     };
   },[]);
   function onInfoBoxMouseEnter(id:string){
-    const tmp = id ==='l'?true:false
+    const tmp = id ==='l'?true:false;
     setSlideBox({l_hover:tmp,r_hover:!tmp});
   }
   function onInfoBoxMouseLeave(){
@@ -143,7 +143,7 @@ function Introduction () {
                 </div>
               </div>
               <div className="p-8">
-                <div className='l' style={{opacity:slideBox.r_hover?0.5:1}} onMouseEnter={()=>onInfoBoxMouseEnter('l')} onMouseLeave={()=>onInfoBoxMouseLeave()}>
+                <div className="l" style={{opacity:slideBox.r_hover?0.5:1}} onMouseEnter={()=>onInfoBoxMouseEnter('l')} onMouseLeave={()=>onInfoBoxMouseLeave()}>
                   <div className="info">
                     <div className="title">
                       <p>lǐ xiǎnɡ </p>
@@ -155,7 +155,7 @@ function Introduction () {
                     </div>
                   </div>
                 </div>
-                <div className='r' style={{opacity:slideBox.l_hover?0.5:1}} onMouseEnter={()=>onInfoBoxMouseEnter('r')} onMouseLeave={()=>onInfoBoxMouseLeave()}>
+                <div className="r" style={{opacity:slideBox.l_hover?0.5:1}} onMouseEnter={()=>onInfoBoxMouseEnter('r')} onMouseLeave={()=>onInfoBoxMouseLeave()}>
                   <div className="info">
                     <div className="title">
                       <p>xiàn shí</p>
@@ -168,7 +168,7 @@ function Introduction () {
                 </div>
               </div>
               <div className="gap gap-100 p-6">
-                <div className='card-box'>
+                <div className="card-box">
                   <div className="card-cell">
                     <img className="" src={getImgSrc(11)} alt=""/>
                     <h4>克隆技术</h4>
