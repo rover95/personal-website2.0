@@ -187,9 +187,12 @@
           justify-content: center;
           align-items: center;
           width: 60vw;
-          height: 1000vw;
+          height: 100vw;
           flex-shrink: 0;
+          color: #fff;
           transition: width 0.5s, opacity 0.5s;
+          background-size: cover;
+          background-position:center;
           &:hover{
             width: 70vw;
             .info{
@@ -253,6 +256,7 @@
         text-align: center;
         color: #fff;
         height: 140vh;
+        padding: 10vh 0;
       }
     }
     
