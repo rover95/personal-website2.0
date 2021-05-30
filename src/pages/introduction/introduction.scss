@@ -77,6 +77,7 @@
           grid-column-end: 4;
           grid-row-start: 3;
         }
+        
         h1{
           // text-align: center;
         }
@@ -88,7 +89,15 @@
         h6{
 
         }
+        @media screen and (max-width: 500px) {
+            .position{
+                  text-align: center;
+                  grid-column-start: 1;
+                  font-size: 14px;
+                }
+        }
       }
+      
       .p-2{
         display: flex;
         justify-content: center;
@@ -129,20 +138,23 @@
       .p-6{
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         flex-direction: column;
         color: #fff;
         text-align: center;
         padding-top: 50px;
+        max-height: 100vw;
         .card-box{
           display: flex;
           justify-content: space-around;
           align-items: center;
           width: 100%;
           .card-cell{
+            flex-shrink: 0;
+            flex-grow: 0;
             img{
               width: 300px;
-              max-width: 30vw;
+              max-width: 25vw;
               border-radius: 6px;
               overflow: hidden;
               margin-bottom: 10px;
@@ -179,6 +191,7 @@
         background-color: #000;
         color: #333;
         overflow: hidden;
+        max-height: 100vw;
         $rotate:10deg;
         $deviation: 5vw;
         .l,.r{

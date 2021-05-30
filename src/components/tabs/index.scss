@@ -1,12 +1,16 @@
 .namespace-tabs{
+  position: relative;
+  width: 100vw;
   .row {
     position: fixed;
     top: 0;
     left: 0px;
-    right: 0;
+    // right: 0;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
     // background-color: #111;
     height: 54px;
     overflow: hidden;

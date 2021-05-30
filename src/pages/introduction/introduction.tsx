@@ -119,7 +119,7 @@ function Introduction () {
                 }}
               >
                 <div className="head-text t-center" data-0="display:block;left:50%;top:40%;transform: translateX(-50%);transform-origin:0 0;" data-300="top:-70%;">
-                  <img className="h-img" src={getImgSrc(12)} alt="" />
+                  <img className="h-img" src={getImgSrc(15)} alt="" />
                   <h1>{Math.round((new Date().getTime() - 799975200000) / 3600 / 1000)} </h1>
                   <p>hours ago，I was born</p>
                 </div>
@@ -146,17 +146,17 @@ function Introduction () {
                   <div className="card-cell">
                     <img className="" src={getImgSrc(11)} alt="" />
                     <h4>克隆技术</h4>
-                    <p>将复制粘贴应用到实际生产生活中</p>
+                    <p>魔法师，克隆专家</p>
                   </div>
                   <div className="card-cell">
-                    <img className="" src={getImgSrc(10)} alt="" />
+                    <img className="" src={getImgSrc(12)} alt="" />
                     <h4>摄影</h4>
-                    <p>用光的艺术</p>
+                    <p>保持贫穷的法门</p>
                   </div>
                   <div className="card-cell">
                     <img className="" src={getImgSrc(13)} alt="" />
                     <h4>跋山涉水</h4>
-                    <p>终日昏昏醉梦间，忽闻春尽强登山</p>
+                    <p>忽闻春尽强登山</p>
                   </div>
                 </div>
               </div>

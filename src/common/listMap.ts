@@ -26,9 +26,9 @@ export const menuMap: Menu[] = [
     order: 0,
   },
   {
-    label: 'PHOTO',
-    url: '/photography',
-    order: 2,
+    label: 'FOOTMARK',
+    url: '/footmark',
+    order: 3,
   },
   {
     label: 'ME',
@@ -36,9 +36,9 @@ export const menuMap: Menu[] = [
     order: 1,
   },
   {
-    label: 'FOOTMARK',
-    url: '/footmark',
-    order: 3,
+    label: 'PHOTO',
+    url: '/photography',
+    order: 2,
   },
   {
     label: 'PROJECT',
@@ -77,7 +77,7 @@ export const contactIconMap:ContactType[] = [
     label: '微博',
     value: '--',
     icon: icon_weibo,
-    url: 'http://weibo.com/u/5466949550',
+    url: 'https://weibo.com/u/5366939550',
   },
   {
     label: 'github',

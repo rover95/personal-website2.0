@@ -18,7 +18,7 @@ function Tabs (props:any) {
     <div>
       {location.pathname !== '/' && currentIdx > -1 ? (
         <div className="namespace-tabs">
-          <div className="row" style={{ width }}>
+          <div className="row">
             <div className="row-container">
               {menu.map((val, idx) => {
                 return (
