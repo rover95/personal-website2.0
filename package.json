@@ -28,7 +28,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "three": "^0.123.0",
+    "three": "^0.137.0",
     "tone": "^14.7.58"
   },
   "devDependencies": {
