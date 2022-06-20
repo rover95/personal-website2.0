@@ -9,7 +9,7 @@ const webpackConfigDev = {
     contentBase: resolve(__dirname, "../dist"),
     historyApiFallback: true,
     host: "0.0.0.0",
-    port: 5555,
+    port: 8888,
     hot: true,
   },
 }

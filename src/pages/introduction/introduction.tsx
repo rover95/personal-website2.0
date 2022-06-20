@@ -2,6 +2,7 @@ import React, { useState, useEffect, MouseEvent } from 'react';
 import { contactIconMap } from '../../common/listMap';
 import ContactCard from '../../components/contactCard';
 import isPC from '../../utils/isPC';
+import { imgBaseUrl } from '../../config';
 
 // @ts-ignore
 import skrollr from '../../common/skrollr.min.js';
@@ -12,7 +13,7 @@ let skrollrExample:any;
 import './introduction.scss';
 
 function getImgSrc(num:number){
-  return `./static/img/bg-img/${num}.jpg`;
+  return `${imgBaseUrl}/bg-img/${num}.jpg`;
 }
 
 function Introduction () {

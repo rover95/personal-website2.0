@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Pano from '../../components/panorama';
+import { imgBaseUrl } from '../../config';
 
 import './panorama.scss';
-
-
 
 function Panorama () {
   const [src, setSrc] = useState(getSrc(2));
@@ -13,8 +12,8 @@ function Panorama () {
     height: window.innerHeight
   });
   const history = useHistory();
-  function getSrc (num:number|string){
-    return `../../../static/img/panorama/${num}.jpg`;
+  function getSrc (num:number|string, url?:string){
+    return `${url || imgBaseUrl}/panorama/${num}.jpg`;
   }
   function onBackClick(){
     history.goBack();

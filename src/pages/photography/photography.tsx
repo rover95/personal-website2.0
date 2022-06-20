@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 // @ts-ignore
 import Parallax from 'parallax-js';
 import Card from '../../components/parallax';
+import { imgBaseUrl } from '../../config';
 
 import './photography.scss';
 
@@ -23,7 +24,7 @@ function Photography () {
   },[]);
   function onImgClick(idx: number) {
     setShowCurrentImg(true);
-    setCurrentImg(`./static/img/photo/${idx + 1}.jpg`);
+    setCurrentImg(`${imgBaseUrl}/photo/${idx + 1}.jpg`);
   }
   function onImgCoverClick(){
     setShowCurrentImg(false);
@@ -46,7 +47,7 @@ function Photography () {
                   <div key={idx}>
                     <img
                       // src="https://livewallpaperhd.com/wp-content/uploads/2017/07/Dark-Elegant-Wallpaper.jpg"
-                      src={`./static/img/photo/${idx + 1}.jpg`}
+                      src={`${imgBaseUrl}/photo/${idx + 1}.jpg`}
                       alt={`img-${idx}`}
                       onClick={() => onImgClick(idx)}
                       className="img-cell"
