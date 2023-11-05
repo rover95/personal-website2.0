@@ -12,7 +12,7 @@ const arr:any[] = [];
 for (let i = 1; i < 60; i++) {
   arr.push(i);
 }
-function Photography () {
+function Photography() {
   const history = useHistory();
   const [showCurrentImg, setShowCurrentImg] = useState(false);
   const [currentImg, setCurrentImg] = useState('');

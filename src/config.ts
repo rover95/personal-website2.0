@@ -7,7 +7,7 @@ const useHashRouter: boolean = true;
 
 //const imgBaseUrl = 'https://image-flame.vercel.app/img/personal-website2.0';
 //const imgBaseUrl =  'https://rovelast-img.oss-cn-hangzhou.aliyuncs.com/website-img/personal-website2.0';
-//const imgBaseUrl = 'https://raw.githubusercontent.com/rover95/image/master/img/personal-website2.0';
-const imgBaseUrl = 'https://www.rovelast.com/static/img'
+const imgBaseUrl = 'https://raw.githubusercontent.com/rover95/image/master/img/personal-website2.0';
+// const imgBaseUrl = 'https://www.rovelast.com/static/img'
 
 export { aMapKey, resourceUrls, useHashRouter, imgBaseUrl };
