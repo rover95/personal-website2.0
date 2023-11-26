@@ -48,7 +48,7 @@ function keyboardListen() {
 function Index () {
   //证书问题，非https下移动端陀螺仪权限会有问题
   if(location.host === 'rovelast.com'){
-    location.href = 'https://rover95.github.io/personal-website2.0/'
+    location.href = 'https://personal-website2-0.vercel.app/'
   }
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
