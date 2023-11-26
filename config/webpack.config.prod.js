@@ -2,7 +2,6 @@ const { resolve, join } = require("path");
 const { merge } = require("webpack-merge");
 const webpackConfigBase = require("./webpack.config.base");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const copyWebpackPlugin = require("copy-webpack-plugin");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 
