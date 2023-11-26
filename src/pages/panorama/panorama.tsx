@@ -5,6 +5,8 @@ import { imgBaseUrl } from '../../config';
 
 import './panorama.scss';
 
+const photoArr = Array.from({length: 15}, (_, i) => i + 1);
+
 function Panorama () {
   const [src, setSrc] = useState(getSrc(2));
   const [size, setSize] = useState({
@@ -33,13 +35,16 @@ function Panorama () {
     //   setSrc('../../../static/img/panorama/3.jpg');
     // }, 3000);
     window.addEventListener('resize', onWindowResize, false);
+    return () => {
+      window.removeEventListener('resize', onWindowResize, false);
+    };
   },[]);
 
   return (
     <div className="nameplace_panorama">
       <div className="pano-box">
         <div className="back-btn" onClick={onBackClick}>返回</div>
-        {[1, 2, 3, 4, 5,6,7,8,9].map((val) => {
+        {photoArr.map((val) => {
           return (
             <div className="cell" key={val} onClick={()=>onPanoItemClick(val)}>
               <img src={getSrc(val)} alt="" />
