@@ -6,7 +6,7 @@ const webpackConfigDev = {
   devtool: "eval-source-map",
   mode: 'development',
   devServer: {
-    contentBase: resolve(__dirname, "../dist"),
+    static: resolve(__dirname, "../dist"),
     historyApiFallback: true,
     host: "0.0.0.0",
     port: 8888,
