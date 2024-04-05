@@ -1,4 +1,4 @@
-[
+export default [
     {
         "_id": {
             "$oid": "5cb98322635db3ebc87f89cd"
@@ -728,7 +728,7 @@
             ],
             "type": "Point"
         },
-        "name": "羊卓雍措",
+        "name": "羊卓雍错",
         "time": "Thu Dec 24 2020 23:27:09 GMT+0800 (CST)",
         "been": true,
         "coordinate": "90.626141,29.178468"

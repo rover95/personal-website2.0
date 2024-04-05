@@ -3,6 +3,9 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import '@amap/amap-jsapi-types';
 import axios from 'axios';
 import {aMapKey,resourceUrls} from '../../config';
+import marks from "./marks";
+import marks_2024 from "./marks_2024";
+
 import marker_b from '../../assets/img/icon/icon_marker_b.png';
 import marker_r from '../../assets/img/icon/icon_marker_r.png';
 
@@ -31,18 +34,17 @@ function Footmark () {
           mapStyle: 'amap://styles/whitesmoke', //设置地图的显示样式
           viewMode: '2D', //设置地图模式
         });
-        axios.get(resourceUrls.footmarks).then(res=>{
-          console.log(res.data);
-          
-          initMarkers(res.data);
-        });
+        // axios.get(resourceUrls.footmarks).then(res=>{
+        //   initMarkers(res.data);
+        // });
+        initMarkers(marks.concat(marks_2024))
       })
       .catch((e) => {
         console.log(e);
       });
   }
   
-  function initMarkers(list:[]):void{
+  function initMarkers(list:any[]):void{
     list.forEach((val:any)=>{
       const marker = new AMap.Marker({
         position: val.coordinate.split(','),
